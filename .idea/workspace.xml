@@ -4,7 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca61226f-1bdc-46f6-aa82-f40915b9acc0" name="Changes" comment="update etc" />
+    <list default="true" id="ca61226f-1bdc-46f6-aa82-f40915b9acc0" name="Changes" comment="add: 코틀린에서의 변수와 타입, 연산자를 다루는 방법">
+      <change afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec06/Lec06Main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec07/FilePrinter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec07/Lec07Main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec08/Lec08Main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec08/Lec08Main2.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec08/Lec08Main3.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec08/Lec08Main4.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec04/Lec04Main3.kt" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec04/Lec04Main3.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec05/Lec05Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec05/Lec05Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec05/Lec05Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec05/Lec05Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec06/Lec06Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec06/Lec06Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec07/JavaFilePrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec07/JavaFilePrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec07/Lec07Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec07/Lec07Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec08/Lec08Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec08/Lec08Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec09/JavaPerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec09/JavaPerson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec09/Lec09Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec09/Lec09Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaAnimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaAnimal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaCat.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaCat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaDerived.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaDerived.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaFlyable.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaFlyable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaPenguin.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaPenguin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaSwimable.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/JavaSwimable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/Lec10Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec10/Lec10Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec11/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec11/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec12/JavaPerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec12/JavaPerson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec12/JavaSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec12/JavaSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec12/Lec12Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec12/Lec12Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec12/Movable.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec12/Movable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec12/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec12/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec13/JavaHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec13/JavaHouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec13/Lec13Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec13/Lec13Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec14/JavaCountry.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec14/JavaCountry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec14/JavaPersonDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec14/JavaPersonDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec14/Lec14Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec14/Lec14Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec15/Lec15Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec15/Lec15Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec16/Lec16Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec16/Lec16Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec16/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec16/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec17/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec17/Fruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec17/FruitFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec17/FruitFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec17/Lec17Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/src/main/kotlin/lec17/Lec17Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +82,7 @@
       <list>
         <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -48,66 +93,45 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2dZre4hb7YEX0OMeq5v2JkqpFkf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/munjunyong/Desktop/github-myself-projects/kotlin-practice",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/munjunyong/Desktop/github-myself-projects/kotlin-practice&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/java-to-kotlin-starter-guide-master/src/main/kotlin" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.Lec01MainKt">
-    <configuration name="Lec04Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lec04.Lec04Main" />
-      <module name="kotlin-with-java.main" />
+  <component name="RunManager" selected="Kotlin.Lec08Main3Kt">
+    <configuration name="Lec07Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lec07.Lec07Main" />
+      <module name="java-to-kotlin.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="lec04.*" />
+          <option name="PATTERN" value="lec07.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="java-to-kotlin-starter-guide [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/java-to-kotlin-starter-guide" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
     </configuration>
     <configuration name="Lec01MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lec01.Lec01MainKt" />
@@ -116,27 +140,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Lec04Main3Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lec04.Lec04Main3Kt" />
-      <module name="kotlin-with-java.main" />
+    <configuration name="Lec08Main2Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lec08.Lec08Main2Kt" />
+      <module name="java-to-kotlin.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Lec04Main4Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lec04.Lec04Main4Kt" />
-      <module name="kotlin-with-java.main" />
+    <configuration name="Lec08Main3Kt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lec08.Lec08Main3Kt" />
+      <module name="java-to-kotlin.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Lec08MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="lec08.Lec08MainKt" />
+      <module name="java-to-kotlin.main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.Lec08Main3Kt" />
+        <item itemvalue="Kotlin.Lec08Main2Kt" />
+        <item itemvalue="Kotlin.Lec08MainKt" />
+        <item itemvalue="Application.Lec07Main" />
         <item itemvalue="Kotlin.Lec01MainKt" />
-        <item itemvalue="Gradle.java-to-kotlin-starter-guide [build]" />
-        <item itemvalue="Kotlin.Lec04Main4Kt" />
-        <item itemvalue="Application.Lec04Main" />
-        <item itemvalue="Kotlin.Lec04Main3Kt" />
       </list>
     </recent_temporary>
   </component>
@@ -152,6 +183,7 @@
       <workItem from="1710233071214" duration="125000" />
       <workItem from="1710233211560" duration="1177000" />
       <workItem from="1710236997919" duration="90000" />
+      <workItem from="1710237105199" duration="4914000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -185,7 +217,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710232738782</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add: 코틀린에서의 변수와 타입, 연산자를 다루는 방법">
+      <option name="closed" value="true" />
+      <created>1710237188845</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710237188845</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,6 +247,7 @@
     <MESSAGE value="add: 코틀린에서 변수와 타입, 연산자를 다루는 방법" />
     <MESSAGE value="update .gitignore" />
     <MESSAGE value="update etc" />
-    <option name="LAST_COMMIT_MESSAGE" value="update etc" />
+    <MESSAGE value="add: 코틀린에서의 변수와 타입, 연산자를 다루는 방법" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: 코틀린에서의 변수와 타입, 연산자를 다루는 방법" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 package lec04
 
 fun main() {
-    if(fun1() || fun2()) {
+    if (fun1() || fun2()) {
         println("본문")
     }
 }

@@ -2,7 +2,7 @@ package com.lannstark.lec17;
 
 public interface FruitFilter {
 
-  boolean isSelected(Fruit fruit);
+    boolean isSelected(Fruit fruit);
 
 }
 
