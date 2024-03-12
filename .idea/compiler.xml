@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="java-to-kotlin" target="11" />
+      <module name="java-to-kotlin.main" target="11" />
+      <module name="java-to-kotlin.test" target="11" />
+      <module name="kotlin-with-java" target="11" />
+      <module name="kotlin-with-java.main" target="11" />
+      <module name="kotlin-with-java.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
