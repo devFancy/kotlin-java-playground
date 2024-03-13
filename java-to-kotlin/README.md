@@ -31,10 +31,10 @@
 
     - ?. 를 쓰면 실행시키면 가능
 
-    elvis 연산자 - 앞의 연산 결과가 null이면 뒤의 값을 사용
-    
+   elvis 연산자 - 앞의 연산 결과가 null이면 뒤의 값을 사용
+
     - ?: 쓰면 앞이 null이면 뒤의 값(0)을 사용
-        
+
 3. 널 아님 단언!!
     - nullable type이지만, 아무리 생각해도 null이 될 수 없는 경우
 
@@ -102,7 +102,6 @@
         println(money1 + money2) // Money(amount=3000)
     }
     ```
-
 
 ## 섹션2. 코틀린에서 코드를 제어하는 방법
 
@@ -193,7 +192,6 @@
     }
     ```
 
-
 ### 6강. 코틀린에서 반복문을 다루는 방법
 
 1. for-each 문
@@ -220,7 +218,7 @@
 ### 8장. 코틀린에서 함수를 다루는 방법
 
 1. 함수 선언 문법
-    - 함수는 클래스 안에, 파일 최상단에 있을 수 있다. 또한,  한 파일안에 여러 함수들이 있을 수 있다.
+    - 함수는 클래스 안에, 파일 최상단에 있을 수 있다. 또한, 한 파일안에 여러 함수들이 있을 수 있다.
 2. default parameter
 
     - 물론 코틀린에서도 자바와 동일하게 오버로드 기능은 있다.
@@ -280,3 +278,264 @@
         }
     }
     ```
+
+## 섹션3. 코틀린에서의 OOP
+
+### 9장. 코틀린에서 클래스를 다루는 방법
+
+1. 클래스와 프로퍼티
+
+- 프로퍼티 = 필드 + getter, setter
+- 코틀린에서는 필드만 만들면 getter, setter를 자동으로 만들어준다.
+
+  ![](/img/kotlin-9-1.png)
+
+  ![](/img/kotlin-9-2.png)
+
+2. 생성자와 init
+
+- 주생성자 - 반드시 존재, 단 주생성자에 파라미터가 하나도 없으면 생략 가능
+
+  ![](/img/kotlin-9-3.png)
+
+- 부생성자 - 있을수 있고, 없을 수 있다.
+- **최종적**으로 주생성자를 this로 호출해야 한다. → body를 가질 수 있다.
+
+  ![](/img/kotlin-9-4.png)
+
+- 본문은 역순으로 실행됨
+    - “두 번째 부생성자”를 먼저 호출하지만, 반환은 “초기화 블록” 부터 실행된다.
+    - Converting과 같은 경우 부생성자를 사용할 수 있지만, 그보다는 정적 팩토리 메소드를 추천 드린다 → 실무에서는 부생성자를 잘 사용하지 않음
+
+    ```kotlin
+    package lec09
+    
+    fun main() {
+        Person()
+    }
+    
+    class Person0 constructor(name: String, age: Int) {
+        var name = name;
+        var age = age;
+    }
+    
+    class Person(
+        var name: String,
+        var age: Int
+    ) {
+        init {
+            if (age <= 0) {
+                throw IllegalArgumentException("나이는 ${age}일 수 없습니다.")
+            }
+    			println("초기화 블록")
+        }
+    
+        constructor(name: String) : this(name, 1) {
+            println("첫 번째 부생성자")
+        }
+    
+        constructor() : this("팬시") {
+            println("두 번째 부생성자")
+        }
+    }
+    // 결과
+    초기화 블록
+    첫 번째 부생성자
+    두 번째 부생성자
+    ```
+
+
+3. 커스텀 getter, setter
+
+- 함수로 하는 방법과 프로퍼티로 하는 방법이 있음 ⇒ 두 방법 모두 동일한 기능
+- 객체의 속성이라면 custom getter, 그렇지 않으면 함수로 작성한다.
+- custom getter를 사용하면 자기 자신을 변경해줄 수도 있다.
+
+4. backing field
+
+- 왜 field를 사용하는 걸까?
+
+  ![](/img/kotlin-9-5.png)
+
+- name은 getter를 부른다 ⇒ 무한루프 발생
+
+  ![](/img/kotlin-9-6.png)
+
+- 무한루프 막기위한 예약어
+
+  ![](/img/kotlin-9-7.png)
+
+**정리**
+
+- 코틀린에서는 필드를 만들면 getter와 (필요에 따라) setter가 자동으로 생긴다.
+- 이를 ‘프로퍼티’라고 부른다.
+
+    ```kotlin
+    class Person (
+    var name: String = "팬시", 
+    var age: Int = 1
+    )
+    ```
+
+- 코틀린에서는 `주생성자`가 필수이다.
+- 커스텀 키워드를 부생성자를 추가로 만들 수 있지만, `default parameter`나 `정적 팩터리 메서드`를 추천한다.
+- 실제 메모리에 존재하는 것과 무관하게 custom getter와 custom setter를 만들 수 있다.
+- custom getter, custom setter에서 무한루프를 막기 위해 `field`라는 키워드를 사용한다.
+- 이를 **backing field** 라고 부른다.
+
+### 10장. 코틀린에서 상속을 다루는 방법
+
+1. 추상 클래스
+    - Animal이란 추상 클래스를 구현한 Cat, Penguin
+
+   ![](/img/kotlin-10-2.png)
+
+    - extend 키워드를 사용하지 않고, : 를 사용한다.
+    - 상위 클래스의 생성자를 바로 호출한다.
+    - override를 필수적으로 붙여줘야 한다.
+
+        ```java
+        // Java
+        package lec10;
+        
+        public class JavaCat extends JavaAnimal {
+        
+            public JavaCat(String species) {
+                super(species, 4);
+            }
+        
+            @Override
+            public void move() {
+                System.out.println("고양이가 사뿐 사뿐 걸어가~");
+            }
+        
+        }
+        
+        ```
+
+        ```kotlin
+        // Kotlin
+        package lec10
+        
+        class Cat(
+            species: String
+        ) : Animal(species, 4) {
+        
+            override fun move() {
+                println("고양이가 사뿐 사뿐 걸어가~")
+            }
+        }
+        
+        ```
+
+    - 프로퍼티에 대한 오버라이딩을 할 때에는 추상 프로퍼티가 아니라면, 상속받을 때 `open`을 꼭 붙어야 한다.
+
+        ```kotlin
+        package lec10
+        
+        abstract class Animal(
+            protected val species: String,
+            protected open val legCount: Int,
+        ) {
+            abstract fun move()
+        }
+        ```
+
+        ```kotlin
+        package lec10
+        
+        class Penguin (
+            species: String
+        ) : Animal(species, 2) {
+        
+            private val wingCount: Int = 2
+        
+            override fun move() {
+                println("팽귄이 움직입니다~ 꿱꿱")
+            }
+        
+            override val legCount: Int
+                get() = super.legCount + this.wingCount
+        }
+        ```
+
+    - 자바와 코틀린 모두 추상 클래스는 인스턴스화 할 수 없다.
+
+2. 인터페이스
+    - Flyable, Swimmable 인터페이스를 구현한 Penguin
+    - 인터페이스 구현도 `:` 을 사용한다.
+
+      ![](/img/kotlin-10-2.png)
+
+        ```kotlin
+        class Penguin (
+            species: String
+        ) : Animal(species, 2), Swimable, Flyable {
+        
+            private val wingCount: Int = 2
+        
+            override fun move() {
+                println("팽귄이 움직입니다~ 꿱꿱")
+            }
+        
+            override val legCount: Int
+                get() = super.legCount + this.wingCount
+        
+            override fun act() {
+                super<Swimable>.act()
+                super<Flyable>.act()
+            }
+        
+            override val swimAbility: Int
+                get() = 4
+        }
+        ```
+
+    - 자바와 코틀린 모두 인터페이스를 인스턴스화 할 수 없다.
+    - Kotlin에서는 backing field가 없는 프로퍼티를 Interface에 만들 수 있다.
+3. 클래스를 상속할 때 주의할 점
+    - 아래 클래스를 실행하게 되면 결과가 300, 100도 아닌 0이 나온다. → 왜 그럴까
+
+    ```kotlin
+    package lec10
+    
+    fun main() {
+        Derived(300)
+    }
+    
+    open class Base(
+        open val number: Int = 100
+    ) {
+        init {
+            println("Base Class")
+            println(number)
+        }
+    }
+    
+    class Derived(
+        override val number: Int
+    ) : Base(number) {
+        init {
+            println("Derived Class")
+        }
+    }
+    ```
+
+    - 상위 클래스를 호출하게 되면, 하위 클래스에 있는 넘버를 가져온다.
+    - 근데 아직 상위 클래스에 constructor가 먼저 실행된 단계라서, 하위 클래스에 number라는 값에 초기화가 이루어지지 않은 것임
+    - 그 상태에서 먼저 하위 클래스의 number에 접근하므로 결과가 0이 된 것임
+    - 따라서, 상위 클래스를 설계할 때 생성자 또는 초기화 블록에 사용되는 **프로퍼티는 open을 피해야 한다.**
+4. 상속 관련 지시어 정리
+    - final: override를 할 수 없게 한다. → 클래스, 프로퍼티 (default로 보이지 않게 존재한다.)
+    - open: override를 열어준다
+    - abstract: 반드시 override 해야한다.
+    - override: 상위 타입을 오바라이드 하고 있다. → 코틀린에서는 어노테이션이 아니라 키워드로 사용해야 한다.
+
+**정리**
+
+- 상속 또는 구현을 할 때 `:` 을 사용해야 한다.
+- 상위 클래스 상속을 구현할 때 생성자를 반드시 호출해야 한다.
+- override를 필수로 붙여야 한다.
+- 추상 멤버가 아니면 기본적으로 오버라이드가 불가능하다.
+    - **`open`**을 사용해주어야 한다.
+- 상위 클래스의 생성자 또는 초기화 블록에서 open 프로퍼티를 사용하면 얘기치 못한 버그가 생길 수 있다.

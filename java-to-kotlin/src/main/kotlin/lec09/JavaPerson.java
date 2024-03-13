@@ -1,4 +1,4 @@
-package com.lannstark.lec09;
+package lec09;
 
 public class JavaPerson {
 
@@ -34,4 +34,3 @@ public class JavaPerson {
     }
 
 }
-

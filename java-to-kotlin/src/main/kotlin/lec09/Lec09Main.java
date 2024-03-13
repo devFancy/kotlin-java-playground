@@ -1,4 +1,4 @@
-package com.lannstark.lec09;
+package lec09;
 
 public class Lec09Main {
 
