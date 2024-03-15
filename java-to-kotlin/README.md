@@ -161,7 +161,7 @@
 
     ```kotlin
     when (값) {
-    	조건부 -> 어떠한 구문
+        조건부 -> 어떠한 구문
       조건부 -> 어떠한 구문 
       else -> 어떠한 구문
     }
@@ -288,20 +288,20 @@
 - 프로퍼티 = 필드 + getter, setter
 - 코틀린에서는 필드만 만들면 getter, setter를 자동으로 만들어준다.
 
-![](/img/kotlin-9-1.png)
+<img src="./img/kotlin-9-1.png">
 
-![](/img/kotlin-9-2.png)
+<img src="./img/kotlin-9-2.png">
 
 2. 생성자와 init
 
 - 주생성자 - 반드시 존재, 단 주생성자에 파라미터가 하나도 없으면 생략 가능
 
-![](/img/kotlin-9-3.png)
+<img src="./img/kotlin-9-3.png">
 
 - 부생성자 - 있을수 있고, 없을 수 있다.
 - **최종적**으로 주생성자를 this로 호출해야 한다. → body를 가질 수 있다.
 
-![](/img/kotlin-9-4.png)
+<img src="./img/kotlin-9-4.png">
 
 - 본문은 역순으로 실행됨
     - “두 번째 부생성자”를 먼저 호출하지만, 반환은 “초기화 블록” 부터 실행된다.
@@ -354,15 +354,15 @@
 
 - 왜 field를 사용하는 걸까?
 
-![](/img/kotlin-9-5.png)
-
+   <img src="./img/kotlin-9-5.png">
+    
 - name은 getter를 부른다 ⇒ 무한루프 발생
-
-![](/img/kotlin-9-6.png)
-
+    
+  <img src="./img/kotlin-9-6.png">
+    
 - 무한루프 막기위한 예약어
-
-![](/img/kotlin-9-7.png)
+    
+  <img src="./img/kotlin-9-7.png">
 
 **정리**
 
@@ -385,9 +385,10 @@
 ### 10장. 코틀린에서 상속을 다루는 방법
 
 1. 추상 클래스
+
 - Animal이란 추상 클래스를 구현한 Cat, Penguin
 
-![](/img/kotlin-10-2.png)
+<img src="./img/kotlin-10-1.png">
 
 - extend 키워드를 사용하지 않고, : 를 사용한다.
 - 상위 클래스의 생성자를 바로 호출한다.
@@ -396,29 +397,29 @@
 ```java
 // Java
 package lec10;
-    
+
 public class JavaCat extends JavaAnimal {
-    
+
     public JavaCat(String species) {
         super(species, 4);
     }
-    
+
     @Override
     public void move() {
         System.out.println("고양이가 사뿐 사뿐 걸어가~");
     }
-    
+
 }
 ```
 
 ```kotlin
 // Kotlin
 package lec10
-    
+
 class Cat(
     species: String
 ) : Animal(species, 4) {
-    
+
     override fun move() {
         println("고양이가 사뿐 사뿐 걸어가~")
     }
@@ -429,7 +430,7 @@ class Cat(
 
 ```kotlin
 package lec10
-    
+
 abstract class Animal(
     protected val species: String,
     protected open val legCount: Int,
@@ -440,17 +441,17 @@ abstract class Animal(
 
 ```kotlin
 package lec10
-    
-class Penguin (
+
+class Penguin(
     species: String
 ) : Animal(species, 2) {
-    
+
     private val wingCount: Int = 2
-    
+
     override fun move() {
         println("팽귄이 움직입니다~ 꿱꿱")
     }
-    
+
     override val legCount: Int
         get() = super.legCount + this.wingCount
 }
@@ -463,27 +464,27 @@ class Penguin (
 - Flyable, Swimmable 인터페이스를 구현한 Penguin
 - 인터페이스 구현도 `:` 을 사용한다.
 
-![](/img/kotlin-10-2.png)
+<img src="./img/kotlin-10-2.png">
 
 ```kotlin
-class Penguin (
+class Penguin(
     species: String
 ) : Animal(species, 2), Swimable, Flyable {
-    
+
     private val wingCount: Int = 2
-    
+
     override fun move() {
         println("팽귄이 움직입니다~ 꿱꿱")
     }
-    
+
     override val legCount: Int
         get() = super.legCount + this.wingCount
-    
+
     override fun act() {
         super<Swimable>.act()
         super<Flyable>.act()
     }
-    
+
     override val swimAbility: Int
         get() = 4
 }
@@ -493,31 +494,32 @@ class Penguin (
 - Kotlin에서는 backing field가 없는 프로퍼티를 Interface에 만들 수 있다.
 
 3. 클래스를 상속할 때 주의할 점
+
 - 아래 클래스를 실행하게 되면 결과가 300, 100도 아닌 0이 나온다. → 왜 그럴까
 
 ```kotlin
   package lec10
-    
-  fun main() {
-      Derived(300)
-  }
-    
-  open class Base(
-      open val number: Int = 100
-  ) {
-      init {
-          println("Base Class")
-          println(number)
-      }
-  }
-    
-  class Derived(
-      override val number: Int
-  ) : Base(number) {
-      init {
-          println("Derived Class")
-      }
-  }
+
+fun main() {
+    Derived(300)
+}
+
+open class Base(
+    open val number: Int = 100
+) {
+    init {
+        println("Base Class")
+        println(number)
+    }
+}
+
+class Derived(
+    override val number: Int
+) : Base(number) {
+    init {
+        println("Derived Class")
+    }
+}
 ```
 
 - 상위 클래스를 호출하게 되면, 하위 클래스에 있는 넘버를 가져온다.
@@ -526,6 +528,7 @@ class Penguin (
 - 따라서, 상위 클래스를 설계할 때 생성자 또는 초기화 블록에 사용되는 **프로퍼티는 open을 피해야 한다.**
 
 4. 상속 관련 지시어 정리
+
 - final: override를 할 수 없게 한다. → 클래스, 프로퍼티 (default로 보이지 않게 존재한다.)
 - open: override를 열어준다
 - abstract: 반드시 override 해야한다.
@@ -540,13 +543,12 @@ class Penguin (
     - **`open`** 을 사용해주어야 한다.
 - 상위 클래스의 생성자 또는 초기화 블록에서 open 프로퍼티를 사용하면 얘기치 못한 버그가 생길 수 있다.
 
-
 ### 11장. 코틀린에서 접근 제어를 다루는 방법
 
 1. 자바와 코틀린의 가시성 제어
     - 자바와 코틀린 차이
 
-    ![](/img/kotlin-11-1.png)
+   <img src="./img/kotlin-11-1.png">
 
     - 코틀린에서는 패키지를 namespace를 **관리하기 위한 용도**로만 사용! → 가시성 제어에는 사용되지 않음 ⇒ 영역을 나누기 위한 용도로만 사용
     - default 대신 internal로 사용(같은 모듈) → 모듈: 한 번에 컴파일 되는 Kotlin 코드
@@ -556,17 +558,18 @@ class Penguin (
 2. 코틀린 파일의 접근 제어
     - 또한,  **.kt 파일에 변수, 함수, 클래스 여러개를 바로 만들 수 있다.**
 
-    ![](/img/kotlin-11-2.png)
+   <img src="./img/kotlin-11-2.png">
 
 3. 다양한 구성요소의 접근 제어 - 클래스, 생성자, 프로퍼티
     - 클래스 → 자바와 동일
 
-    - 생성자도 가시성의 범위는 동일, 단 생성자에 접근 지시어를 붙이려면 `constructor`를 써줘야 한다. → 원래는 public constructor가 생략되어 있는데, private, protected, internal 이면 뒤에  `constructor` 를 붙여줘야 한다.
+    - 생성자도 가시성의 범위는 동일, 단 생성자에 접근 지시어를 붙이려면 `constructor`를 써줘야 한다. → 원래는 public constructor가 생략되어 있는데, private,
+      protected, internal 이면 뒤에  `constructor` 를 붙여줘야 한다.
     - 프로퍼티 - 2가지 Case
 
-    ![](/img/kotlin-11-3.png)
+   <img src="./img/kotlin-11-3.png">
 
-    ![](/img/kotlin-11-4.png)
+   <img src="./img/kotlin-11-4.png">
 
     ```kotlin
     class Car(
@@ -627,7 +630,8 @@ class Penguin (
     ```
 
 - Kotlin
-    - 일반적으로 `val` 은 **런타임 시에 변수가 할당**되지만, val 앞에 `const`를 붙이게 되면 **컴파일 시에 변수가 할당**된다. → 이는 진짜 상수에 붙이기 위한 용도 / 기본적으로 기본 타입과 String에 붙일 수 있다.
+    - 일반적으로 `val` 은 **런타임 시에 변수가 할당**되지만, val 앞에 `const`를 붙이게 되면 **컴파일 시에 변수가 할당**된다. → 이는 진짜 상수에 붙이기 위한 용도 / 기본적으로 기본
+      타입과 String에 붙일 수 있다.
 
     ```kotlin
     class Person private constructor(
@@ -729,7 +733,6 @@ class Penguin (
     }
     ```
 
-
 ### 13장. 코틀린에서 중첩 클래스를 다루는 방법
 
 중첩 클래스는 실무에서 거의 사용x
@@ -738,17 +741,17 @@ class Penguin (
     - `static 클래스`: **밖의 클래스를 직접 참조 불가능하다.**
     - `내부 클래스`: 클래스 안의 클래스로, **밖의 클래스를 직접 참조 가능하다.**
 
-    ![](/img/kotlin-13-1.png)
+   <img src="./img/kotlin-13-1.png">
 
     - static 클래스, 내부 클래스 그림으로 정리
 
-    ![](/img/kotlin-13-2.png)
+   <img src="./img/kotlin-13-2.png">
 
     - 이펙티브 자바 (ver.3)
-        - 1. 내부 클래스는 숨겨진 외부 클래스 정보를 가지고 있어, 참조를 해지하지 못하는 경우 메모리 누수가 생길 수 있고, 이를 디버깅 하기 어렵다.
-        - 2. 내부 클래스의 직렬화 형태가 명확하게 정의되지 않아 직렬화에 있어 제한이 있다.
+        - 내부 클래스는 숨겨진 외부 클래스 정보를 가지고 있어, 참조를 해지하지 못하는 경우 메모리 누수가 생길 수 있고, 이를 디버깅 하기 어렵다.
+        - 내부 클래스의 직렬화 형태가 명확하게 정의되지 않아 직렬화에 있어 제한이 있다.
 
-      ⇒ 결론: **클래스 안에 클래스를 만들 때는 `static` 클래스를 사용하라**
+    ⇒ 결론: **클래스 안에 클래스를 만들 때는 `static` 클래스를 사용하라**
 
 2. 코틀린의 중첩 클래스와 내부 클래스
     - 중첩 클래스
@@ -763,7 +766,6 @@ class Penguin (
     ) {
         class LivingRoom(
             private val area: Double
-    }
     }
     ```
 
