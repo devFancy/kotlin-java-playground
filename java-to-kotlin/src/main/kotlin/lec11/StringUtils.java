@@ -1,4 +1,4 @@
-package com.lannstark.lec11;
+package lec11;
 
 public abstract class StringUtils {
 

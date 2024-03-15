@@ -1,4 +1,4 @@
-package com.lannstark.lec13;
+package lec13;
 
 public class Lec13Main {
 

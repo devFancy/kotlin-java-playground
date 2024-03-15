@@ -495,7 +495,7 @@ class Penguin (
 3. 클래스를 상속할 때 주의할 점
 - 아래 클래스를 실행하게 되면 결과가 300, 100도 아닌 0이 나온다. → 왜 그럴까
 
-  ```kotlin
+```kotlin
   package lec10
     
   fun main() {
@@ -518,7 +518,7 @@ class Penguin (
           println("Derived Class")
       }
   }
-  ```
+```
 
 - 상위 클래스를 호출하게 되면, 하위 클래스에 있는 넘버를 가져온다.
 - 근데 아직 상위 클래스에 constructor가 먼저 실행된 단계라서, 하위 클래스에 number라는 값에 초기화가 이루어지지 않은 것임
@@ -537,5 +537,253 @@ class Penguin (
 - 상위 클래스 상속을 구현할 때 생성자를 반드시 호출해야 한다.
 - override를 필수로 붙여야 한다.
 - 추상 멤버가 아니면 기본적으로 오버라이드가 불가능하다.
-    - **`open`**을 사용해주어야 한다.
+    - **`open`** 을 사용해주어야 한다.
 - 상위 클래스의 생성자 또는 초기화 블록에서 open 프로퍼티를 사용하면 얘기치 못한 버그가 생길 수 있다.
+
+
+### 11장. 코틀린에서 접근 제어를 다루는 방법
+
+1. 자바와 코틀린의 가시성 제어
+    - 자바와 코틀린 차이
+
+    ![](/img/kotlin-11-1.png)
+
+    - 코틀린에서는 패키지를 namespace를 **관리하기 위한 용도**로만 사용! → 가시성 제어에는 사용되지 않음 ⇒ 영역을 나누기 위한 용도로만 사용
+    - default 대신 internal로 사용(같은 모듈) → 모듈: 한 번에 컴파일 되는 Kotlin 코드
+        - IDEA Moduel, Maven Projexct, Gradle Source Set
+    - public, private은 자바와 동일 / protected, internal 부분만 다름
+    - 코틀린의 기본 접근 지시어가 `public` 임
+2. 코틀린 파일의 접근 제어
+    - 또한,  **.kt 파일에 변수, 함수, 클래스 여러개를 바로 만들 수 있다.**
+
+    ![](/img/kotlin-11-2.png)
+
+3. 다양한 구성요소의 접근 제어 - 클래스, 생성자, 프로퍼티
+    - 클래스 → 자바와 동일
+
+    - 생성자도 가시성의 범위는 동일, 단 생성자에 접근 지시어를 붙이려면 `constructor`를 써줘야 한다. → 원래는 public constructor가 생략되어 있는데, private, protected, internal 이면 뒤에  `constructor` 를 붙여줘야 한다.
+    - 프로퍼티 - 2가지 Case
+
+    ![](/img/kotlin-11-3.png)
+
+    ![](/img/kotlin-11-4.png)
+
+    ```kotlin
+    class Car(
+        internal val name:String,
+        private var owner: String,
+        _price: Int
+    ) {
+        var price = _price
+            private set
+    }
+    ```
+
+4. Java와 Kotlin을 함께 사용할 경우 주의할 점
+    - Internal은 바이트 코드 상 public 상이 된다. → 때문에 Java 코드에서는 Kotlin 모듈의 internal 코드를 가져올 수 있다.
+    - Kotlin의 protected와 Java의 protected는 다름 → Java는 같은 패키지의 Kotlin protected 멤버에 접근할 수 있다.
+
+**정리**
+
+- Kotlin에서 패키지는 namespace 관리용이기 때문에
+  protected는 의미가 달라졌다.
+- Kotlin에서는 default가 사라지고, 모듈간의 접근을 통제하는
+  internal이 새로 생겼다.
+- 생성자에 접근 지시어를 붙일 때는 constructor를 명시적으로
+  써주어야 한다.
+- 유틸성 함수를 만들 때는 파일 최상단을 이용하면 편리하다.
+- 프로퍼티의 custom setter에 접근 지시어를 붙일 수 있다.
+- Java에서 Kotlin 코드를 사용할 때 internal과 protected는 주의해야 한다.
+
+### 12장. 코틀린에서 object 키워드를 다루는 방법
+
+1. static 함수와 변수
+
+- 코틀린에서는 `static` 이라는 함수가 없어서, 이 대신에 `companion object` 키워드를 사용한다.
+    - `static` : 정적으로 인스턴스끼리 값을 공유
+    - `companion object` : 클래스와 동행하는 유일한 오브젝트(객체)
+- Java
+
+    ```java
+    public class JavaPerson {
+    
+        private static final int MIN_AGE = 1;
+    
+        public static JavaPerson newBaby(String name) {
+            return new JavaPerson(name, MIN_AGE);
+        }
+    
+        private String name;
+    
+        private int age;
+    
+        private JavaPerson(String name, int age) {
+            this.name = name;
+            this.age = age;
+        }
+    
+    }
+    
+    ```
+
+- Kotlin
+    - 일반적으로 `val` 은 **런타임 시에 변수가 할당**되지만, val 앞에 `const`를 붙이게 되면 **컴파일 시에 변수가 할당**된다. → 이는 진짜 상수에 붙이기 위한 용도 / 기본적으로 기본 타입과 String에 붙일 수 있다.
+
+    ```kotlin
+    class Person private constructor(
+        var name: String,
+        var age: Int,
+    ) {
+        companion object {
+            val MIN_AGE = 1
+            fun newBaby(name:String): Person {
+                return Person(name, MIN_AGE)
+            }
+        }
+    }
+    ```
+
+    - Java에서 Kotlin companion object를 사용하려면 `@JvmStatic` 을 붙여야 한다.
+
+    ```kotlin
+    package lec12
+    
+    fun main() {
+    
+    }
+    
+    class Person private constructor(
+        var name: String,
+        var age: Int,
+    ) {
+        companion object {
+            private const val MIN_AGE = 1
+            
+            @JvmStatic
+            fun newBaby(name:String): Person {
+                return Person(name, MIN_AGE)
+            }
+        }
+    }
+    ```
+
+
+2. 싱글톤
+
+- 싱글톤: 단 하나의 인스턴스만을 갖는 클래스
+
+    ```java
+    public class JavaSingleton {
+    
+        private static final JavaSingleton INSTANCE = new JavaSingleton();
+    
+        private JavaSingleton() {
+        }
+    
+        public static JavaSingleton getInstance() {
+            return INSTANCE;
+        }
+    
+    }
+    
+    ```
+
+- 코틀린에서 싱글톤을 사용하려면 앞에 `object`를 붙여주면 된다.
+
+    ```kotlin
+    fun main() {
+        println(Singleton.a)
+        Singleton.a += 10
+        println(Singleton.a)
+    }
+    
+    object Singleton {
+        var a: Int = 0
+    }
+    ```
+
+
+3. 익명 클래스
+
+- 익명 클래스: 특정 인터페이스나 클래스를 상속받은 구현체를 일회성으로 사용할 때 쓰는 클래스
+- 자바에서는 new 타입 이름(), 코틀린에서는 `object: 타입이름` 으로 사용한다.
+
+    ```kotlin
+    package lec12
+    
+    fun main() {
+        moveSomething(object : Movable {
+            override fun move() {
+                println("무브 무브")
+            }
+    
+            override fun fly() {
+                println("날다 날다")
+            }
+        })
+    }
+    
+    private fun moveSomething(movable: Movable) {
+        movable.move()
+        movable.fly()
+    }
+    ```
+
+
+### 13장. 코틀린에서 중첩 클래스를 다루는 방법
+
+중첩 클래스는 실무에서 거의 사용x
+
+1. 중첩 클래스의 종류
+    - `static 클래스`: **밖의 클래스를 직접 참조 불가능하다.**
+    - `내부 클래스`: 클래스 안의 클래스로, **밖의 클래스를 직접 참조 가능하다.**
+
+    ![](/img/kotlin-13-1.png)
+
+    - static 클래스, 내부 클래스 그림으로 정리
+
+    ![](/img/kotlin-13-2.png)
+
+    - 이펙티브 자바 (ver.3)
+        - 1. 내부 클래스는 숨겨진 외부 클래스 정보를 가지고 있어, 참조를 해지하지 못하는 경우 메모리 누수가 생길 수 있고, 이를 디버깅 하기 어렵다.
+        - 2. 내부 클래스의 직렬화 형태가 명확하게 정의되지 않아 직렬화에 있어 제한이 있다.
+
+      ⇒ 결론: **클래스 안에 클래스를 만들 때는 `static` 클래스를 사용하라**
+
+2. 코틀린의 중첩 클래스와 내부 클래스
+    - 중첩 클래스
+
+    ```kotlin
+    fun main() {
+    }
+    
+    class House (
+        private val address: String,
+        private val livingRoom: LivingRoom
+    ) {
+        class LivingRoom(
+            private val area: Double
+    }
+    }
+    ```
+
+    - 내부 클래스 - `inner`를 앞에 추가해야함
+
+    ```kotlin
+    package lec13
+    
+    fun main() {
+    }
+    
+    class House (
+        private val address: String,
+        private val livingRoom: LivingRoom
+    ) {
+        inner class LivingRoom(
+            private val area: Double
+        ) {
+            val address: String
+                get() = this@House.address
+        }
+    }
+    ```

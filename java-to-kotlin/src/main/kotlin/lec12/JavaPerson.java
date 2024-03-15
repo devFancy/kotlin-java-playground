@@ -1,4 +1,4 @@
-package com.lannstark.lec12;
+package lec12;
 
 public class JavaPerson {
 
