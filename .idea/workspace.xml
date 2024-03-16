@@ -5,31 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca61226f-1bdc-46f6-aa82-f40915b9acc0" name="Changes" comment="add: 코틀린에서의 변수와 타입, 연산자를 다루는 방법">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library-app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_23_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_1_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_common_1_8_20.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk7_1_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_stdlib_jdk8_1_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_test_1_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlin_kotlin_test_junit5_1_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_kotlinx_kotlinx_coroutines_core_jvm_1_7_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_engine_5_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_commons_1_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_junit_platform_junit_platform_engine_1_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/java-to-kotlin.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/java-to-kotlin.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/java-to-kotlin.test.iml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-app/src/main/kotlin/com/group/libraryapp/calculator/Calculator.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-app/src/test/kotlin/com/group/libraryapp/JunitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-app/src/test/kotlin/com/group/libraryapp/calculator/CalculatorTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-app/src/test/kotlin/com/group/libraryapp/calculator/JunitCalculatorTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library-app/src/test/kotlin/com/group/libraryapp/service/user/UserServiceTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java-to-kotlin/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/java-to-kotlin/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library-app/src/main/java/com/group/libraryapp/dto/user/request/UserCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/library-app/src/main/java/com/group/libraryapp/dto/user/request/UserCreateRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +51,8 @@
         <option value="Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin Enum" />
-        <option value="Kotlin Class" />
         <option value="Kotlin File" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
@@ -84,89 +67,159 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/munjunyong/Desktop/github-myself-projects/kotlin-practice&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "ignore_missing_gitignore": "true",
+    "last_opened_file_path": "/Users/munjunyong/Desktop/github-myself-projects/kotlin-practice/library-app/src/test/kotlin/com/group/libraryapp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "spring.configuration.checksum": "7a9180757339ae4c083f8443ffe3f3ed",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/library-app/src/test/kotlin/com/group/libraryapp" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/java-to-kotlin/img" />
       <recent name="$PROJECT_DIR$/java-to-kotlin-starter-guide-master/src/main/kotlin" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.group.libraryapp.calculator" />
+    </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.LibraryAppApplication">
-    <configuration name="Lec15Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lec15.Lec15Main" />
-      <module name="java-to-kotlin.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="lec15.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="RunManager" selected="Gradle.UserServiceTest.saveUserTest">
+    <configuration name="JunitCalculatorTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/library-app" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.group.libraryapp.calculator.JunitCalculatorTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
     </configuration>
-    <configuration name="Lec15MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lec15.Lec15MainKt" />
-      <module name="java-to-kotlin.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="JunitCalculatorTest.divideExceptionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/library-app" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.group.libraryapp.calculator.JunitCalculatorTest.divideExceptionTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
     </configuration>
-    <configuration name="Lec16MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lec16.Lec16MainKt" />
-      <module name="java-to-kotlin.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="JunitTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/library-app" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.group.libraryapp.JunitTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
     </configuration>
-    <configuration name="StringUtilsKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="lec16.StringUtilsKt" />
-      <module name="java-to-kotlin.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="UserServiceTest.saveUserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/library-app" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.group.libraryapp.service.user.UserServiceTest.saveUserTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>true</ForceTestExec>
+      <method v="2" />
     </configuration>
-    <configuration name="LibraryAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="library-app.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.group.libraryapp.LibraryAppApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.group.libraryapp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="CalculatorTestKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.group.libraryapp.calculator.CalculatorTestKt" />
+      <module name="library-app.test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.LibraryAppApplication" />
-        <item itemvalue="Kotlin.Lec16MainKt" />
-        <item itemvalue="Kotlin.StringUtilsKt" />
-        <item itemvalue="Kotlin.Lec15MainKt" />
-        <item itemvalue="Application.Lec15Main" />
+        <item itemvalue="Gradle.UserServiceTest.saveUserTest" />
+        <item itemvalue="Gradle.JunitCalculatorTest.divideExceptionTest" />
+        <item itemvalue="Gradle.JunitCalculatorTest" />
+        <item itemvalue="Gradle.JunitTest" />
+        <item itemvalue="Kotlin.CalculatorTestKt" />
       </list>
     </recent_temporary>
   </component>
@@ -185,7 +238,8 @@
       <workItem from="1710237105199" duration="12239000" />
       <workItem from="1710349579231" duration="2515000" />
       <workItem from="1710488257599" duration="16591000" />
-      <workItem from="1710592178631" duration="762000" />
+      <workItem from="1710592178631" duration="2536000" />
+      <workItem from="1710594739609" duration="1192000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
