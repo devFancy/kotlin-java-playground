@@ -4,6 +4,8 @@
 
 공식문서, 오픈 소스, 온라인 강의, 책, 컨퍼런스를 통해 학습한 코드와 문서를 기록하려고 합니다.
 
+새로운 언어를 배우면서 하나씩 알아가는 재미로 개발하며 살아가고 있습니다. 
+
 ## Contents
 
 - [코틀린 입문](https://github.com/devFancy/kotlin-practice/tree/main/java-to-kotlin)
