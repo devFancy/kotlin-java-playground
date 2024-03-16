@@ -1,4 +1,4 @@
-package com.lannstark.lec17;
+package lec17;
 
 public class Fruit {
 

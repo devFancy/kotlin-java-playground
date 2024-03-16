@@ -1,4 +1,4 @@
-package com.lannstark.lec16;
+package lec16;
 
 public class Person {
 

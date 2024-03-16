@@ -789,3 +789,217 @@ class Derived(
         }
     }
     ```
+
+### 14장. 코틀린에서 다양한 클래스를 다루는 방법
+
+1. Data Class
+    - `data` 키워드를 붙여주면 equals, hashCode, toString을 자동으로 만들어준다.
+
+    ```kotlin
+    data class PersonDto (
+        val name: String,
+        val age: Int
+    )
+    ```
+
+    - java에서는 jdk 16부터 kotlin의 data class 같은 record class를 도입함
+2. Enum Class
+    - 일반적으로 아래와 같이, 크게 다른 점은 없다.
+
+    ```kotlin
+    enum class Country (
+        private val code: String
+    ){
+        KOREA("KO"),
+        AMERICA("US");
+    }
+    ```
+
+    - 하지만 when을 사용할 때, **Enum Class** 혹은 Sealed Class 와 함께 사용할 경우, 더욱더 진가를 발휘한다.
+    - 컴파일러가 country의 모든 타입을 알고 있어 다른 타입에 대한 로직(else)을 작성하지 않아도 된다.
+
+    ```kotlin
+    private fun handleCountry(country: Country) {
+        when(country) {
+            Country.KOREA -> TODO()
+            Country.AMERICA -> TODO()
+        }
+    }
+    
+    ```
+
+3. Sealed Class, Sealed Interface
+    - sealed → 사전적인 의미는 “봉인을 한”
+    - 나오게 된 배경: 상속이 가능하도록 추상클래스를 만들고 싶은데, 외부에서는 이 클래스를 상속받지 않으면 좋겠다. → 하위 클래스를 **봉인**하자
+    - 특징
+        - Point: **`컴파일 타임` 때 하위 클래스의 타입을 모두 기억한다.** → 즉, 런타임때 클래스 타입이 추가될 수 없다.
+        - 하위 클래스는 같은 패키지에 있어야 한다.
+    - enum과 다른점
+        - 클래스를 상속받을 수 있다.
+        - 하위 클래스는 멀티 인스턴스가 가능하다.
+
+    ```kotlin
+    sealed class HyundaiCar (
+        val name: String,
+        val price: Long
+    )
+    
+    class Avante : HyundaiCar("아반테", 1_000L)
+    
+    class Sonata : HyundaiCar("소나타", 2_000L)
+    
+    class Grandeur : HyundaiCar("그렌저", 3_000L)
+    ```
+
+    - sealed만 빼고 본다면, 추상 클래스와 전혀 다를게 없다.
+    - 추상 메서드로 선언한다면, 하위 클래스에서 모두 구현을 해줘야 한다.
+    - 추상화가 필요한 Entity or Dto에 sealed class를 활용한다.
+    - enum class보다 유연하지만, 하위 클래스를 제한하는 `Sealed Class` 역시 when과 함께 주로 사용된다.
+
+## 섹션4. 코틀린에서의 FP(함수형 프로그래밍)
+
+### 15장. 코틀린에서 배열과 컬렉션을 다루는 방법
+
+1. **배열**
+- 실무에서는 배열보다 **리스트**를 주로 사용한다.
+
+  ```kotlin
+  fun main() {
+      val array = arrayOf(100, 200)
+      array.plus(300)
+    
+      for (i in array.indices) {
+          println("${i} ${array[i]}")
+      }
+    
+      for ((idx, value) in array.withIndex()) {
+          println("$idx $value")
+      }
+  }
+  ```
+
+- `array.indices` 는 0부터 마지막 index까지의 Range이다.
+- `array.withIndex()` 를 사용하면, 인덱스와 값을 한 번에 가져올 수 있다.
+- `array.plus()` 를 통해 값을 쉽게 넣을 수도 있다.
+
+2. **코틀린에서의 Collection → List, Set, Map**
+- 컬렉션을 만들어줄 때 **불변**인지, **가변**인지를 설정해야 한다.
+
+<img src ="img/kotlin-15-1.png">  
+
+- `가변(Mutable) 컬렉션`: 컬렉션에 element를 추가, 삭제할 수 있다.
+- `불변 컬렉션`: 컬렉션에 element를 추가, 삭제할 수 없다.
+- Collection을 만들자마자 Collections.unmodifiableList() 를 붙여준다. ⇒ 불변
+- 또한, 불변 컬렉션일지라도 Reference Type인 Element의 필드는 바꿀 수 있다. ⇒ 필드 값 수정 가능
+
+  1) List
+
+  ```kotlin
+  fun main() {
+      val numbers = listOf(100, 200) // <Int> 생략 가능
+      val emptyList = emptyList<Int>()
+    
+      printNumbers(emptyList())
+  }
+    
+  private fun printNumbers(numbers: List<Int>) {
+        
+  }
+  ```
+
+  - listof() 를 통해 ‘불변 리스트’를 만든다.
+  - 또한 emptyList<타입>() → 타입을 적어줘야 한다.
+  - 만약, 타입을 추론할 수 있다면 생략 가능하다. → ex. printNubers() 메서드
+
+  ```kotlin
+  fun main() {
+      val numbers = listOf(100, 200) //  불변 리스트. <Int> 생략 가능
+      val numbers2 = mutableListOf(100, 200) // 가변 리스트
+      val emptyList = emptyList<Int>()
+    
+      // List
+      println(numbers[0]) // 첫번째 값 가져오기
+    
+      for (number in numbers) {
+          println(number)
+      }
+    
+      for ((idx, value) in numbers.withIndex()) {
+          println("${idx} ${value}")
+      }
+  }
+  ```
+
+  - 가변(Mutable) 리스트의 기본 구현체는 ArrayList이고, 기타 사용법은 Java와 동일하다.
+  - **[Tip] 우선 불변 리스트를 만들고, 꼭 필요한 경우 가변 리스트로 바꾼다.**
+
+  2) Set(집합)
+
+  - `Set`(집합)은 List와 다르게 순서가 없고, 같은 element는 하나만 존재할 수 있다. → 자료구조의 의미를 제외하고는 모든 기능이 List와 비슷하다.
+
+  ```kotlin
+  fun main() {
+      val numbers = setOf(100, 200) //  불변 집합, <Int> 생략 가능
+      val numbers2 = mutableSetOf(100, 200) // 가변 집합, 기본 구현체는 LinkedHashSet
+    
+      for (number in numbers) {
+          println(number)
+      }
+    
+      for ((index, number) in numbers.withIndex()) {
+          println("$index $number")
+      }
+  }
+    
+  ```
+
+  3) Map
+
+  - kotlin도 동일하게 MutableMap 혹은 정적 팩토리 메서드를 활용할 수 있다.
+  - 타입을 추론할 수 없기에, **타입을 지정한다.**
+  - 가변 Map이기 때문에 `(key, value)`를 넣을 수 있다.
+  - java 처럼 put을 쓸 수 있고, `map[key] = value` 을 쓸 수도 있다.
+  - `mapOf(key to value)` 를 사용해 불변 map으로 만들 수 있다.
+
+  ```kotlin
+  fun main() {
+      val map = mutableMapOf<Int, String>() // 타입을 추론할 수 없기에, 타입을 지정함
+      map[1] = "MONDAY"
+      map[2] = "TUESDAY"
+    
+      mapOf(1 to "MONDAY", 2 to "TUESDAY") // 불변 map으로 만듬
+        
+      for(key in map.keys) {
+          println(key)
+          println(map[key])
+      }
+    
+      for((key, value) in map.entries) {
+          println(key)
+          println(value)
+      }
+  }
+  ```
+
+3. **컬렉션의 null 가능성, Java와 함께 사용하기**
+- `List<Int?>` : **리스트에 null이 들어갈 수 있지만**, 리스트는 절대 null이 아님
+- `List<Int>?` : 리스트에는 null이 들어갈 수 없지만, **리스트는 null일 수 있음**
+- `List<Int?>?` : **리스트에 null이 들어갈 수도 있고, 리스트가 null일 수도 있음**
+- ? 위치에 따라 null 의미가 달라진다.
+
+   Java ↔ Kotlin
+
+  - Java는 읽기 전용 컬렉션과 변경 가능 컬렉션을 구분하지 않는다.
+
+  <img src="img/kotlin-15-2.png">
+
+  - Java는 nullable 타입과 non-nullable 타입을 구분하지 않는다.
+    
+  <img src="img/kotlin-15-3.png">
+
+  - 정리: Kotlin 쪽의 컬렉션이 Java에서 호출되면 컬렉션 내용이 변할 수 있음을 감안해야 한다. 또는 코틀린쪽에서 `Collections.unmodifialbleXXX()`를 활용하면 자바에서의 변경 자체를 막을 수 있다.
+  - Kotlin에서 Java 컬렉션을 가져다 사용할 때, **플랫폼 타입**을 신경써야 한다.
+
+  <img src="img/kotlin-15-4.png">
+
+  - 정리: Java 코드를 보며, 맥락을 확인하고 Java 코드를 가져오는 지점을 wrapping 한다.
