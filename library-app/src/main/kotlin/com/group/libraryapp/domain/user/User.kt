@@ -10,7 +10,7 @@ import javax.persistence.Id
 import javax.persistence.OneToMany
 
 @Entity
-class User(
+class User constructor(
 
     var name: String,
 
@@ -23,8 +23,8 @@ class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 ) {
-    init{
-        if(name.isBlank()) {
+    init {
+        if (name.isBlank()) {
             throw IllegalArgumentException("이름은 비어 있을 수 없습니다")
         }
     }

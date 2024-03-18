@@ -4,7 +4,15 @@ plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.6.21' // kotlin (1)
     id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.21'
+    id "org.jetbrains.kotlin.plugin.allopen" version "1.6.21"
 
+}
+
+// plugins, dependencies와 같은 Level (즉 build.gradle 최상단)
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
 }
 
 group = 'com.group'
