@@ -4,6 +4,7 @@ plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.6.21' // kotlin (1)
     id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.21'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.6.21' // 상속, 오버라이딩 가능
     id "org.jetbrains.kotlin.plugin.allopen" version "1.6.21"
 
 }
