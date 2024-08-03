@@ -5,8 +5,8 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.6.21' // kotlin (1)
     id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.21'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.6.21' // 상속, 오버라이딩 가능
-    id "org.jetbrains.kotlin.plugin.allopen" version "1.6.21"
-
+    id 'org.jetbrains.kotlin.plugin.allopen' version "1.6.21"
+    id 'org.jetbrains.kotlin.kapt' version '1.6.21'
 }
 
 // plugins, dependencies와 같은 Level (즉 build.gradle 최상단)
@@ -28,10 +28,14 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8" // kotlin (2)
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'com.h2database:h2'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.jetbrains.kotlin:kotlin-reflect:1.6.21' // kotlin reflection
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3' // json - kotlin module 추가
+    implementation("com.querydsl:querydsl-jpa:5.0.0")
+    kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
+    kapt("org.springframework.boot:spring-boot-configuration-processor")
+
+    runtimeOnly 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
@@ -40,11 +44,6 @@ tasks.named('test') {
 
 // kotlin (3)
 compileKotlin {
-    kotlinOptions {
-        jvmTarget = "11"
-    }
-}
-compileTestKotlin {
     kotlinOptions {
         jvmTarget = "11"
     }
