@@ -3,7 +3,9 @@ package com.group.libraryapp.controller.book
 import com.group.libraryapp.dto.book.request.BookLoanRequest
 import com.group.libraryapp.dto.book.request.BookRequest
 import com.group.libraryapp.dto.book.request.BookReturnRequest
+import com.group.libraryapp.dto.book.response.BookStatResponse
 import com.group.libraryapp.service.book.BookService
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -23,8 +25,18 @@ class BookController (
         bookService.loanBook(request)
     }
 
-    @PutMapping("book/return")
+    @PutMapping("/book/return")
     fun returnBook(@RequestBody request: BookReturnRequest) {
         bookService.returnBook(request)
+    }
+
+    @GetMapping("/book/loan")
+    fun countLoanBook(): Int {
+        return bookService.countLoanBook();
+    }
+
+    @GetMapping("/book/stat")
+    fun getBookStatistic(): List<BookStatResponse> {
+        return bookService.getBookStatics();
     }
 }
