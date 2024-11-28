@@ -1,4 +1,4 @@
-package team.sipe.commerce.dto;
+package team.sipe.commerce.product;
 
 import lombok.Getter;
 

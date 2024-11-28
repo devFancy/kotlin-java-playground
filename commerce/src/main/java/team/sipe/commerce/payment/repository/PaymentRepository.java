@@ -1,7 +1,7 @@
-package team.sipe.commerce.domain.repository;
+package team.sipe.commerce.payment.repository;
 
-import team.sipe.commerce.domain.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
+import team.sipe.commerce.payment.Payment;
 
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
 }

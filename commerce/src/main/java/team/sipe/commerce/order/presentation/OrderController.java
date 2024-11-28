@@ -1,7 +1,7 @@
-package team.sipe.commerce.presentation;
+package team.sipe.commerce.order.presentation;
 
-import team.sipe.commerce.application.dto.OrderDetailsResponse;
-import team.sipe.commerce.application.OrderService;
+import team.sipe.commerce.order.application.dto.OrderDetailsResponse;
+import team.sipe.commerce.order.application.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

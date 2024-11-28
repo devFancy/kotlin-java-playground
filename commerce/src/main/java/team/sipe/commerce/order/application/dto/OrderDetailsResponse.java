@@ -1,12 +1,12 @@
-package team.sipe.commerce.application.dto;
+package team.sipe.commerce.order.application.dto;
 
-import team.sipe.commerce.domain.Delivery;
-import team.sipe.commerce.domain.Product;
-import team.sipe.commerce.domain.Refund;
-import team.sipe.commerce.dto.DeliveryDetailsResponse;
-import team.sipe.commerce.dto.ProductBundleDetailsResponse;
-import team.sipe.commerce.dto.ProductDetailsResponse;
-import team.sipe.commerce.dto.RefundDetailsDto;
+import team.sipe.commerce.delivery.Delivery;
+import team.sipe.commerce.product.Product;
+import team.sipe.commerce.refund.Refund;
+import team.sipe.commerce.delivery.DeliveryDetailsResponse;
+import team.sipe.commerce.product.ProductBundleDetailsResponse;
+import team.sipe.commerce.product.ProductDetailsResponse;
+import team.sipe.commerce.refund.RefundDetailsResponse;
 import lombok.Getter;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public class OrderDetailsResponse {
         private final ProductBundleDetailsResponse productBundleDetails;
         private final ProductDetailsResponse productDetails;
         private final DeliveryDetailsResponse deliveryDetails;
-        private final RefundDetailsDto refundDetails;
+        private final RefundDetailsResponse refundDetails;
 
         public static OrderItemDto from(final Product product,
                                         final Delivery delivery,
@@ -40,7 +40,7 @@ public class OrderDetailsResponse {
             ProductBundleDetailsResponse bundleDetails = new ProductBundleDetailsResponse("Bundle Name", 10); // 예제 값 설정
             ProductDetailsResponse productDetails = ProductDetailsResponse.from(product);
             DeliveryDetailsResponse deliveryDetails = DeliveryDetailsResponse.from(delivery);
-            RefundDetailsDto refundDetails = RefundDetailsDto.from(refund);
+            RefundDetailsResponse refundDetails = RefundDetailsResponse.from(refund);
 
             return new OrderItemDto(bundleDetails, productDetails, deliveryDetails, refundDetails);
         }
@@ -48,7 +48,7 @@ public class OrderDetailsResponse {
         private OrderItemDto(final ProductBundleDetailsResponse productBundleDetails,
                              final ProductDetailsResponse productDetails,
                              final DeliveryDetailsResponse deliveryDetails,
-                             final RefundDetailsDto refundDetails) {
+                             final RefundDetailsResponse refundDetails) {
             this.productBundleDetails = productBundleDetails;
             this.productDetails = productDetails;
             this.deliveryDetails = deliveryDetails;

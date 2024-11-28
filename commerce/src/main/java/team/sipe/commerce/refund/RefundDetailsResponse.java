@@ -1,29 +1,26 @@
-package team.sipe.commerce.dto;
+package team.sipe.commerce.refund;
 
 
-import team.sipe.commerce.domain.Refund;
-import team.sipe.commerce.domain.RefundMethodName;
-import team.sipe.commerce.domain.RefundStatus;
 import lombok.Builder;
 import lombok.Getter;
 
 // 환불 정보 DTO
 @Getter
-public class RefundDetailsDto {
+public class RefundDetailsResponse {
 
     private final RefundMethodName refundMethodName;
     private final int refundAmount;
     private final RefundStatus refundStatus;
 
     @Builder
-    public RefundDetailsDto(final RefundMethodName refundMethodName, final int refundAmount, final RefundStatus refundStatus) {
+    public RefundDetailsResponse(final RefundMethodName refundMethodName, final int refundAmount, final RefundStatus refundStatus) {
         this.refundMethodName = refundMethodName;
         this.refundAmount = refundAmount;
         this.refundStatus = refundStatus;
     }
 
-    public static RefundDetailsDto from(final Refund refund) {
-        return RefundDetailsDto.builder()
+    public static RefundDetailsResponse from(final Refund refund) {
+        return RefundDetailsResponse.builder()
                 .refundMethodName(refund.getRefundMethodName())
                 .refundAmount(refund.getRefundAmount())
                 .refundStatus(RefundStatus.PENDING)

@@ -1,7 +1,7 @@
-package team.sipe.commerce.domain.repository;
+package team.sipe.commerce.order.repository;
 
-import team.sipe.commerce.domain.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
+import team.sipe.commerce.order.Order;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
 }

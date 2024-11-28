@@ -1,6 +1,5 @@
-package team.sipe.commerce.dto;
+package team.sipe.commerce.product;
 
-import team.sipe.commerce.domain.Product;
 import lombok.Builder;
 import lombok.Getter;
 

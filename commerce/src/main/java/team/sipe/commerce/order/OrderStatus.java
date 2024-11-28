@@ -1,4 +1,4 @@
-package team.sipe.commerce.domain;
+package team.sipe.commerce.order;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,8 @@
-package team.sipe.commerce.domain.repository;
+package team.sipe.commerce.product.repository;
 
-import team.sipe.commerce.domain.Order;
-import team.sipe.commerce.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import team.sipe.commerce.order.Order;
+import team.sipe.commerce.product.Product;
 
 import java.util.List;
 

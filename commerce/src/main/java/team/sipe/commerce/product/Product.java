@@ -1,7 +1,8 @@
-package team.sipe.commerce.domain;
+package team.sipe.commerce.product;
 
 import team.sipe.commerce.common.BaseEntity;
 import lombok.Getter;
+import team.sipe.commerce.order.Order;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

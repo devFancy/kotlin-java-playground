@@ -1,4 +1,4 @@
-package team.sipe.commerce.domain;
+package team.sipe.commerce.refund;
 
 import team.sipe.commerce.common.BaseEntity;
 import lombok.Getter;
