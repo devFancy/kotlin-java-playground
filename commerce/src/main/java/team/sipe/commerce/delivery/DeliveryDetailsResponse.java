@@ -1,5 +1,7 @@
 package team.sipe.commerce.delivery;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -14,10 +16,14 @@ public class DeliveryDetailsResponse {
     private final String storePassword;
     private final String deliveryMemo;
 
+    @JsonCreator
     @Builder
-    public DeliveryDetailsResponse(final String recipientName, final String mobile,
-                                   final String address, final String zipCode,
-                                   final String storePassword, final String deliveryMemo) {
+    public DeliveryDetailsResponse(@JsonProperty("recipientName") final String recipientName,
+                                   @JsonProperty("mobile") final String mobile,
+                                   @JsonProperty("address") final String address,
+                                   @JsonProperty("zipCode") final String zipCode,
+                                   @JsonProperty("storePassword") final String storePassword,
+                                   @JsonProperty("deliveryMemo") final String deliveryMemo) {
         this.recipientName = recipientName;
         this.mobile = mobile;
         this.address = address;

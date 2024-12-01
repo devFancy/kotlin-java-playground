@@ -1,5 +1,7 @@
 package team.sipe.commerce.product;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -12,8 +14,13 @@ public class ProductDetailsResponse {
     private final String description;
     private final int price;
 
+    @JsonCreator
     @Builder
-    public ProductDetailsResponse(final Long productId, final String name, final String description, final int price) {
+    public ProductDetailsResponse(@JsonProperty("productId") final Long productId,
+                                  @JsonProperty("name") final String name,
+                                  @JsonProperty("description") final String description,
+                                  @JsonProperty("price") final int price) {
+
         this.productId = productId;
         this.name = name;
         this.description = description;

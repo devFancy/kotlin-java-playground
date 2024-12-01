@@ -34,12 +34,17 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
+	//jackson
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4.1'
+
 	// h2
 	runtimeOnly 'com.h2database:h2'
 
 	// mysql
 	runtimeOnly 'mysql:mysql-connector-java:8.0.33'
 
+	// mongodb
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 }
 
 tasks.named('test') {

@@ -1,6 +1,8 @@
 package team.sipe.commerce.refund;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -12,8 +14,12 @@ public class RefundDetailsResponse {
     private final int refundAmount;
     private final RefundStatus refundStatus;
 
+    @JsonCreator
     @Builder
-    public RefundDetailsResponse(final RefundMethodName refundMethodName, final int refundAmount, final RefundStatus refundStatus) {
+    public RefundDetailsResponse(
+            @JsonProperty("refundMethodName") final RefundMethodName refundMethodName,
+            @JsonProperty("refundAmount") final int refundAmount,
+            @JsonProperty("refundStatus") final RefundStatus refundStatus) {
         this.refundMethodName = refundMethodName;
         this.refundAmount = refundAmount;
         this.refundStatus = refundStatus;

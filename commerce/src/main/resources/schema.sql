@@ -7,7 +7,10 @@ CREATE TABLE ORDERS (
         order_number INT NOT NULL,
         order_status VARCHAR(50) NOT NULL,
         created_at DATETIME(6) NOT NULL,
-        updated_at DATETIME(6) NOT NULL
+        updated_at DATETIME(6) NOT NULL,
+        INDEX idx_delivery_id (delivery_id), -- 배송 ID 인덱스
+        INDEX idx_refund_id (refund_id),     -- 환불 ID 인덱스
+        INDEX idx_payment_id (payment_id)   -- 결제 ID 인덱스
 );
 
 -- 상품 테이블 생성
@@ -21,7 +24,8 @@ CREATE TABLE PRODUCTS (
         bundle_quantity INT NOT NULL,
         created_at DATETIME(6) NOT NULL,
         updated_at DATETIME(6) NOT NULL,
-        FOREIGN KEY (order_id) REFERENCES ORDERS(order_id)
+        FOREIGN KEY (order_id) REFERENCES ORDERS(order_id),
+        INDEX idx_order_id (order_id) -- 주문 ID 인덱스
 );
 
 -- 결제 테이블 생성

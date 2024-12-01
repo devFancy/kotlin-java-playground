@@ -1,4 +1,4 @@
-package team.sipe.commerce.order.repository;
+package team.sipe.commerce.order.repository.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import team.sipe.commerce.order.Order;

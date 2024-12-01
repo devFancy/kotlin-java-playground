@@ -1,5 +1,7 @@
 package team.sipe.commerce.order.application.dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import team.sipe.commerce.delivery.Delivery;
 import team.sipe.commerce.product.Product;
 import team.sipe.commerce.refund.Refund;
@@ -16,6 +18,11 @@ import java.util.stream.Collectors;
 public class OrderDetailsResponse {
 
     private final List<OrderItemDto> orderItems;
+
+    @JsonCreator
+    public OrderDetailsResponse(@JsonProperty("orderItems") final List<OrderItemDto> orderItems) {
+        this.orderItems = orderItems;
+    }
 
     public OrderDetailsResponse(final List<Product> products,
                                 final Delivery delivery,
@@ -45,10 +52,11 @@ public class OrderDetailsResponse {
             return new OrderItemDto(bundleDetails, productDetails, deliveryDetails, refundDetails);
         }
 
-        private OrderItemDto(final ProductBundleDetailsResponse productBundleDetails,
-                             final ProductDetailsResponse productDetails,
-                             final DeliveryDetailsResponse deliveryDetails,
-                             final RefundDetailsResponse refundDetails) {
+        @JsonCreator
+        private OrderItemDto(@JsonProperty("productBundleDetails") final ProductBundleDetailsResponse productBundleDetails,
+                             @JsonProperty("productDetails") final ProductDetailsResponse productDetails,
+                             @JsonProperty("deliveryDetails") final DeliveryDetailsResponse deliveryDetails,
+                             @JsonProperty("refundDetails") final RefundDetailsResponse refundDetails) {
             this.productBundleDetails = productBundleDetails;
             this.productDetails = productDetails;
             this.deliveryDetails = deliveryDetails;

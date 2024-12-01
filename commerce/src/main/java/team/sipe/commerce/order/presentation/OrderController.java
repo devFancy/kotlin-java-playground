@@ -22,4 +22,11 @@ public class OrderController {
         OrderDetailsResponse response = orderService.findOrderDetails(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+
+    @GetMapping(path = "/api/orders/mongodb/{id}")
+    public ResponseEntity<OrderDetailsResponse> findByOrderDetailWithMongoDb(@PathVariable final Long id) {
+        OrderDetailsResponse response = orderService.findOrderDetailsWithSnapshot(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }
