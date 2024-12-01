@@ -13,6 +13,6 @@ export const options = {
 };
 
 export default function () {
-    http.get('http://localhost:8080/api/orders/1');
+    http.get('http://localhost:8080/api/orders/mongodb/1');
     sleep(0.5);
 }
