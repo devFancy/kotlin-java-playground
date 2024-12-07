@@ -1,3 +1,7 @@
+> Reference
+
+- [자바 개발자를 위한 코틀린 입문](https://www.inflearn.com/course/java-to-kotlin/dashboard)
+
 # 자바 개발자를 위한 코틀린 입문(Java to Kotlin Starter Guide)
 
 ## 섹션1. 코틀린에서 변수와 타입, 연산자를 다루는 방법
