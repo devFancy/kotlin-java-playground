@@ -1,0 +1,57 @@
+profile-name: "local"
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/local?useSSL=false
+    username: test
+    password: test
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+    open-in-view: false
+
+# cors
+cors:
+  allow-origin:
+    urls: http://localhost:8080, http://localhost:3000, http://localhost:3000/oauth/google-redirect, http://localhost:3000/oauth/kakao-redirect
+
+# oauth
+## google oauth
+oauth:
+  google:
+    client-id: ${OAUTH_GOOGLE_CLIENT_ID}
+    client-secret: ${OAUTH_GOOGLE_CLIENT_SECRET}
+    oauth-end-point: https://accounts.google.com/o/oauth2/v2/auth
+    response-type: code
+    scopes:
+      - https://www.googleapis.com/auth/userinfo.email
+      - https://www.googleapis.com/auth/userinfo.profile
+    token-uri: https://oauth2.googleapis.com/token
+    access-type: offline
+
+## kakao oauth
+kakao:
+  client-id: ${OAUTH_KAKAO_CLIENT_ID}
+  client-secret: ${OAUTH_KAKAO_CLIENT_SECRET}
+  authorization-endpoint: https://kauth.kakao.com/oauth/authorize # 인가 코드 받을 때 필요한 endpoint
+  response-type: code
+  scopes:
+    - account_email
+    - profile_nickname
+  token-uri: https://kauth.kakao.com/oauth/token # 액세스 토큰 받을 때 필요한 endpoint
+  user-info-uri: https://kapi.kakao.com/v2/user/me # 액세스 토큰을 사용하여 이 endpoint 를 호출하여 사용자의 정보를 가져올 때 사용
+
+# security
+security:
+  jwt:
+    token:
+      secret-key: ${JWT_SECRET}
+      access:
+        expire-length: 3600000 #1시간
+      refresh:
+        expire-length: 1210000000 #14일
