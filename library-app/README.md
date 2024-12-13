@@ -131,4 +131,4 @@ data class는 equals, hashCode, toString 등의 함수를 자동으로 만들어
 
 Entity (Class) 가 생성되는 로직을 찾고 싶을 경우, `constructor` 지시어를 명시적으로 작성하고 추적하면 편하다.
 
-<img src="/img/kotlin-spring-section2-1.png">
+![](./img/kotlin-spring-section2-1.png)
