@@ -7,7 +7,7 @@ tasks.getByName("jar") {
 }
 
 dependencies {
-    implementation(project(":core:core-common"))
+    implementation(project(":core:core-enum"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
 }

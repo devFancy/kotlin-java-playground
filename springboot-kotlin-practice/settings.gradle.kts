@@ -1,7 +1,7 @@
 rootProject.name = "springboot-kotlin-multi-module-practice"
 
 include(
-    "core:core-common",
+    "core:core-enum",
     "core:core-api",
 )
 
