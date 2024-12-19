@@ -1,0 +1,15 @@
+dependencies {
+    // Spring Boot dependencies with customer-specific versions
+    implementation("org.springframework.boot:spring-boot-actuator-autoconfigure:${project.findProperty("springBootVersion") as String}")
+    implementation("org.springframework.boot:spring-boot-autoconfigure:${project.findProperty("springBootVersion") as String}")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:${project.findProperty("springBootVersion") as String}")
+
+    // Spring Framework dependencies
+    implementation("org.springframework:spring-beans:${project.findProperty("springBeanVersion") as String}")
+    implementation("org.springframework:spring-context:${project.findProperty("springContextVersion") as String}")
+    implementation("org.springframework:spring-core:${project.findProperty("springCoreVersion") as String}")
+    implementation("org.springframework:spring-web:${project.findProperty("springWebVersion") as String}")
+    implementation("org.springframework:spring-webmvc:${project.findProperty("springWebMvcVersion") as String}")
+    implementation("org.springframework:spring-expression:${project.findProperty("springExpressionVersion") as String}")
+
+}

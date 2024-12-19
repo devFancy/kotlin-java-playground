@@ -1,0 +1,14 @@
+dependencies {
+    // Spring Boot dependencies with GoldBank-specific versions
+    implementation("org.springframework.boot:spring-boot-actuator-autoconfigure:${project.findProperty("GoldBankSpringBootVersion") as String}")
+    implementation("org.springframework.boot:spring-boot-autoconfigure:${project.findProperty("GoldBankSpringBootVersion") as String}")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:${project.findProperty("GoldBankSpringBootVersion") as String}")
+
+    // Spring Framework dependencies
+    implementation("org.springframework:spring-beans:${project.findProperty("GoldBankSpringBeanVersion") as String}")
+    implementation("org.springframework:spring-context:${project.findProperty("GoldBankSpringContextVersion") as String}")
+    implementation("org.springframework:spring-core:${project.findProperty("GoldBankSpringCoreVersion") as String}")
+    implementation("org.springframework:spring-web:${project.findProperty("GoldBankSpringWebVersion") as String}")
+    implementation("org.springframework:spring-webmvc:${project.findProperty("GoldBankSpringWebMvcVersion") as String}")
+    implementation("org.springframework:spring-expression:${project.findProperty("GoldBankSpringExpressionVersion") as String}")
+}
