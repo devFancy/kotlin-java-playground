@@ -23,22 +23,22 @@ allprojects {
 }
 
 subprojects {
-	apply(plugin = "org.jetbrains.kotlin.jvm")
-	apply(plugin = "org.jetbrains.kotlin.kapt")
-	apply(plugin = "org.jetbrains.kotlin.plugin.spring")
-	apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
-	apply(plugin = "org.springframework.boot")
-	apply(plugin = "io.spring.dependency-management")
-	apply(plugin = "org.asciidoctor.jvm.convert")
-	apply(plugin = "org.jlleitschuh.gradle.ktlint")
-
-	dependencyManagement {
-		imports {
-			mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudDependenciesVersion")}")
-		}
-	}
-
 	dependencies {
+		apply(plugin = "org.jetbrains.kotlin.jvm")
+		apply(plugin = "org.jetbrains.kotlin.kapt")
+		apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+		apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
+		apply(plugin = "org.springframework.boot")
+		apply(plugin = "io.spring.dependency-management")
+		apply(plugin = "org.asciidoctor.jvm.convert")
+		apply(plugin = "org.jlleitschuh.gradle.ktlint")
+
+		dependencyManagement {
+			imports {
+				mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudDependenciesVersion")}")
+			}
+		}
+
 		implementation("org.jetbrains.kotlin:kotlin-reflect")
 		implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 		implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -47,7 +47,6 @@ subprojects {
 		annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 		kapt("org.springframework.boot:spring-boot-configuration-processor")
 	}
-
 	tasks.getByName("bootJar") {
 		enabled = false
 	}
@@ -64,3 +63,8 @@ subprojects {
 		}
 	}
 }
+
+/**
+ * ktlint 자동 포맷 명령어: ./gradlew ktlintFormat
+ *
+ */
