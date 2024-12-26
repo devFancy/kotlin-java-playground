@@ -1,4 +1,4 @@
-spring.application.name: java-springboot-oauth
+spring.application.name: springboot-java-oauth
 spring.profiles.active: local
 
 

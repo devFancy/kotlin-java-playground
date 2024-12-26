@@ -11,4 +11,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'java-springboot-oauth'
+rootProject.name = 'springboot-java-oauth'
