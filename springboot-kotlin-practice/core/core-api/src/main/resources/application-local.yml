@@ -1,0 +1,5 @@
+springdoc:
+  swagger-ui:
+    path: /service-docs.html
+    query-config-enabled: true
+    enabled: true
