@@ -55,3 +55,10 @@ security:
         expire-length: 3600000 #1시간
       refresh:
         expire-length: 1210000000 #14일
+
+# swagger
+springdoc:
+  swagger-ui:
+    path: /service-docs.html
+    query-config-enabled: true
+    enabled: true
