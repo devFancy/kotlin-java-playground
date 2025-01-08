@@ -2,8 +2,11 @@ package dev.be.springboot.java.async;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
+import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -72,5 +75,30 @@ public class CoffeeComponent implements CoffeeUseCase {
             log.info("supplyAsync");
             return (int) (price * 0.9);
         }, threadPoolTaskExecutor);
+    }
+
+    @Async("threadPoolTaskExecutor")
+    public void order(String name) {
+
+        try {
+            log.info("Order started for coffee: {}", name);
+            Thread.sleep(3000);
+            log.info("Order completed for coffee: {}", name);
+        } catch (InterruptedException e) {
+            log.info(e.getMessage());
+        }
+    }
+
+    @Async("threadPoolTaskExecutor")
+    public CompletableFuture<Integer> getPriceAsyncWithCompletableFuture(String name) {
+
+        try {
+            log.info("start getPrice..." + name);
+            Thread.sleep(3000);
+            log.info("end getPrice ..." + name);
+        } catch (InterruptedException e) {
+            log.info(e.getMessage());
+        }
+        return new AsyncResult<>(3000).completable();
     }
 }
