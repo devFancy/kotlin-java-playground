@@ -34,39 +34,48 @@ public class CoffeeComponentTest {
 
     @Test
     public void 가격_조회_동기_블로킹_호출_테스트() {
-
+        // given
+        String coffeeName = "americano";
         int expectedPrice = 2000;
 
-        int resultPrice = coffeeComponent.getPrice("americano");
-        log.info("최종 가격 전달 받음");
+        // when
+        int resultPrice = coffeeComponent.getPrice(coffeeName);
 
+        // then
+        log.info("최종 가격 전달 받음");
         assertEquals(expectedPrice, resultPrice);
     }
 
     @Test
     public void 가격_조회_비동기_블로킹_호출_테스트() {
-
+        // given
+        String coffeeName = "americano";
         int expectedPrice = 2000;
 
-        CompletableFuture<Integer> future = coffeeComponent.getPriceAsync("americano");
+        // when
+        CompletableFuture<Integer> future = coffeeComponent.getPriceAsync(coffeeName);
         log.info("아직 최종 데이터를 전달 받지는 않았지만, 다른 작업 수행 가능");
-        int resultPrice =  future.join(); // 블로킹
-        log.info("최종 가격 전달 받음");
+        int resultPrice = future.join(); // 블로킹
 
+        // then
+        log.info("최종 가격 전달 받음");
         assertEquals(expectedPrice, resultPrice);
     }
 
     // 비동기 - thenAccept
     @Test
     public void 가격_조회_비동기_호출_콜백_반환없음_테스트() {
-
+        // given
+        String coffeeName = "americano";
         Integer expectedPrice = 2000;
 
+        // when
         CompletableFuture<Void> future = coffeeComponent
-                .getPriceAsync("americano")
-                .thenAccept(p -> {
-                    log.info("콜백, 가격은 " + p + "원, 하지만 데이터를 반환하지는 않음");
-                    assertEquals(expectedPrice, p);
+                .getPriceAsync(coffeeName)
+                .thenAccept(price -> {
+                    // then
+                    log.info("콜백, 가격은 {}원, 하지만 데이터를 반환하지는 않음", price);
+                    assertEquals(expectedPrice, price);
                 });
 
         log.info("아직 최종 데이터를 전달 받지는 않았지만, 다른 작업 수행 가능, 논블로킹");
@@ -81,19 +90,22 @@ public class CoffeeComponentTest {
     // 비동기 - thenApply
     @Test
     public void 가격_조회_비동기_호출_콜백_반환_테스트() {
-
+        // given
+        String coffeeName = "americano";
         Integer expectedPrice = 2000 + 100;
         Executor executor = Executors.newFixedThreadPool(5);
 
+        // when
         CompletableFuture<Void> future = coffeeComponent
-                .getPriceAsync("americano")
-                .thenApplyAsync(p -> {
+                .getPriceAsync(coffeeName)
+                .thenApplyAsync(price -> {
                     log.info("다른 스레드로 동작");
-                    return p + 100;
+                    return price + 100;
                 }, executor)
-                .thenAcceptAsync(p -> {
-                    log.info("콜백, 가격은 " + p + "원, 하지만 데이터를 반환하지는 않음");
-                    assertEquals(expectedPrice, p);
+                .thenAcceptAsync(price -> {
+                    // then
+                    log.info("콜백, 가격은 {}원, 하지만 데이터를 반환하지는 않음", price);
+                    assertEquals(expectedPrice, price);
                 }, executor);
 
         log.info("아직 최종 데이터를 전달 받지는 않았지만, 다른 작업 수행 가능");
@@ -102,52 +114,53 @@ public class CoffeeComponentTest {
 
     @Test
     public void thenCombine_test() {
-
+        // given
+        String coffeeA = "latte";
+        String coffeeB = "mocha";
         Integer expectedPrice = 3000 + 4000;
 
-        CompletableFuture<Integer> futureA = coffeeComponent.getPriceAsync("latte");
-        CompletableFuture<Integer> futureB = coffeeComponent.getPriceAsync("mocha");
-
-        // futureA.thenCombine(futureB, (a,b) -> a + b);
+        // when
+        CompletableFuture<Integer> futureA = coffeeComponent.getPriceAsync(coffeeA);
+        CompletableFuture<Integer> futureB = coffeeComponent.getPriceAsync(coffeeB);
         Integer resultPrice = futureA.thenCombine(futureB, Integer::sum).join();
 
+        // then
         assertEquals(expectedPrice, resultPrice);
     }
 
     @Test
     public void thenCompose_test() {
-
+        // given
+        String coffeeName = "latte";
         Integer expectedPrice = (int) (3000 * 0.9);
 
-        CompletableFuture<Integer> futureA = coffeeComponent.getPriceAsync("latte");
+        // when
+        CompletableFuture<Integer> future = coffeeComponent.getPriceAsync(coffeeName);
+        Integer resultPrice = future.thenCompose(price ->
+                coffeeComponent.getDiscountAsync(price)).join();
 
-        Integer resultPrice = futureA.thenCompose(result ->
-                coffeeComponent.getDiscountAsync(result)).join();
-
+        // then
         assertEquals(expectedPrice, resultPrice);
     }
 
     @Test
     public void allOf_test() {
-
+        // given
+        List<String> coffeeNames = Arrays.asList("latte", "mocha", "americano");
         Integer expectedPrice = 3000 + 4000 + 2000;
 
-        CompletableFuture<Integer> futureA = coffeeComponent.getPriceAsync("latte");
-        CompletableFuture<Integer> futureB = coffeeComponent.getPriceAsync("mocha");
-        CompletableFuture<Integer> futureC = coffeeComponent.getPriceAsync("americano");
+        // when
+        List<CompletableFuture<Integer>> futures = coffeeNames.stream()
+                .map(coffeeComponent::getPriceAsync)
+                .collect(Collectors.toList());
 
-        List<CompletableFuture<Integer>> completableFutureList
-                = Arrays.asList(futureA, futureB, futureC);
-
-        // Integer resultPrice = CompletableFuture.allOf(completableFutureList.toArray(futureA, futureB, futureC));
-        Integer resultPrice = CompletableFuture.allOf(futureA, futureB, futureC)
-                .thenApply(Void -> completableFutureList.stream()
+        Integer resultPrice = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]))
+                .thenApply(Void -> futures.stream()
                         .map(CompletableFuture::join)
-                        .collect(Collectors.toList()))
-                .join()
-                .stream()
-                .reduce(0, Integer::sum);
+                        .reduce(0, Integer::sum))
+                .join();
 
+        // then
         assertEquals(expectedPrice, resultPrice);
     }
 
