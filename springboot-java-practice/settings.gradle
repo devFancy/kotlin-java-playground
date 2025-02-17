@@ -1,0 +1,11 @@
+pluginManagement {
+    plugins {
+        id 'org.springframework.boot' version "${springBootVersion}"
+        id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+        id 'org.asciidoctor.jvm.convert' version "${asciidoctorConvertVersion}"
+    }
+}
+
+rootProject.name = 'springboot-java-practice'
+
+include 'core:core-api'
