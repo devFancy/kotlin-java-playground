@@ -20,9 +20,11 @@
 
 ### 2주차 미션: 크게 소리 내어 모델링 하기
 
-* 1단계, 2단계: [용어 사전 만들기 & 모델링 하기](https://github.com/next-step/ddd-strategic-design/pull/494)
+* 1단계: [용어 사전 만들기](https://github.com/next-step/ddd-strategic-design/pull/494)
 
-* 3단계: [기능 우선 패키지 구성하기](https://github.com/next-step/ddd-strategic-design/pull/500)
+* 2단계: [모델링 하기](https://github.com/next-step/ddd-strategic-design/pull/507)
+
+* 3단계: 기능 우선 패키지 구성하기
 
 ### 3주차 미션: 도메인 주도 설계 기본 요소
 
