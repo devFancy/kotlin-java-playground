@@ -24,11 +24,13 @@
 
 * 2단계: [모델링 하기](https://github.com/next-step/ddd-strategic-design/pull/507)
 
-* 3단계: 기능 우선 패키지 구성하기
+* 3단계: [기능 우선 패키지 구성하기](https://github.com/next-step/ddd-strategic-design/pull/509)
 
 ### 3주차 미션: 도메인 주도 설계 기본 요소
 
 * 0단계 - 기본 코드 준비
+    * 첫 번째 [PR](https://github.com/next-step/ddd-tactical-design/pull/347)
+    * 두 번째 [PR](https://github.com/next-step/ddd-tactical-design/pull/352)
 
 * 1단계 - 리팩터링(상품)
 
