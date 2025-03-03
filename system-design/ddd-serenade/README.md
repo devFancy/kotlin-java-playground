@@ -6,9 +6,9 @@
 >
 > 기간: 2025.01.21 ~ 2025.03.03
 > 
-> 주차별 미션이 완료된 부분만 `(PR) 링크` 를 추가했습니다.
+> 주차별 미션이 완료된 부분만 `(PR) 링크` 를 추가했습니다. 3-4주차는 동일하며, 5주차는 미션이 없습니다.
 
-### 1주차 미션: 도메인 주도 설계 이해
+### 1주차: 도메인 주도 설계 이해
 
 * 0단계: [JUnit 5 학습](https://github.com/next-step/ddd-legacy/pull/725)
 
@@ -18,7 +18,7 @@
 
 * 3단계: [테스트를 통한 코드 보호](https://github.com/next-step/ddd-legacy/pull/835)
 
-### 2주차 미션: 크게 소리 내어 모델링 하기
+### 2주차: 크게 소리 내어 모델링 하기
 
 * 1단계: [용어 사전 만들기](https://github.com/next-step/ddd-strategic-design/pull/494)
 
@@ -26,27 +26,19 @@
 
 * 3단계: [기능 우선 패키지 구성하기](https://github.com/next-step/ddd-strategic-design/pull/509)
 
-### 3주차 미션: 도메인 주도 설계 기본 요소
+### 3주차: 도메인 주도 설계 기본 요소 && 4주차 미션: 도메인 주도 설계 아키텍처
 
 * 0단계 - 기본 코드 준비
     * 첫 번째 [PR](https://github.com/next-step/ddd-tactical-design/pull/347)
     * 두 번째 [PR](https://github.com/next-step/ddd-tactical-design/pull/352)
 
-* 1단계 - 리팩터링(상품)
+* 1단계 - [리팩터링(상품)](https://github.com/next-step/ddd-tactical-design/pull/357)
 
-* 2단계 - 리팩터링(메뉴)
+* 2단계 - [리팩터링(메뉴)](https://github.com/next-step/ddd-tactical-design/pull/366)
 
 * 3단계 - 리팩터링(매장 식사 주문)
 
-### 4주차 미션: 도메인 주도 설계 아키텍처
-
-* 1단계 - 리팩터링
-
-* 2단계 - 리팩터링
-
-* 3단계 - 리팩터링
-
-### 5주차 미션: 도메인 이벤트와 CQRS
+### 5주차: 도메인 이벤트와 CQRS
 
 * 전술적 설계 - DOMAIN EVENT
 
