@@ -8,7 +8,7 @@
 
 새로운 언어를 배우고 탐구해 나가는 과정에서 하나씩 알아가는 즐거움을 경험하며, 개발에 대한 열정을 유지해 나가고 있습니다.
 
-> 설계 관련
+## 설계 관련
 
 - [DDD 세레나데](https://github.com/devFancy/kotlin-java-playground/tree/main/system-design/ddd-serenade)
   - 주관: 넥스트스텝 - 실전 중심의 소프트웨어 개발 교육 플랫폼 / 교육 기간: 2025.01 ~ 2025.03

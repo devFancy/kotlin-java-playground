@@ -38,7 +38,7 @@
     * 첫 번째 [PR](https://github.com/next-step/ddd-tactical-design/pull/366)
     * 두 번째 [PR](https://github.com/next-step/ddd-tactical-design/pull/373)
 
-* 3단계 - 리팩터링(매장 식사 주문) -> 진행중
+* 3단계 - [리팩터링(매장 식사 주문)](https://github.com/next-step/ddd-tactical-design/pull/376)
 
 ## 4주차: 도메인 주도 설계 아키텍처
 
