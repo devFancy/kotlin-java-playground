@@ -3,6 +3,15 @@ jar.enabled = false
 
 dependencies {
     implementation project(":core:core-enum")
+
+    // spring boot
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // spring data jpa
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // h2
+    runtimeOnly 'com.h2database:h2'
+
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${swaggerVersion}")
 }
