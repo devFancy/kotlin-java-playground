@@ -8,4 +8,5 @@ pluginManagement {
 
 rootProject.name = 'springboot-java-practice'
 
-include 'core:core-api'
+include("core:core-api")
+include("core:core-enum")
