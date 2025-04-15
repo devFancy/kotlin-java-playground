@@ -1,8 +1,9 @@
-package dev.be.core.api.controller;
+package dev.be.core.api.controller.v1;
 
+import dev.be.core.api.controller.v1.dto.CreatePostRequest;
+import dev.be.core.api.controller.v1.dto.CreatePostResponse;
+import dev.be.core.api.support.response.CommonResponse;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -10,7 +11,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -24,35 +26,33 @@ import java.util.List;
     """
 )
 @RequestMapping("/api")
-public interface HelloControllerDocs {
+public interface ExamplePostControllerDocs {
 
     @Operation(
-            summary = "특정 ID에 대한 조회",
-            description = "지정된 ID를 사용하여 데이터를 조회합니다."
+            summary = "특정 게시글 등록",
+            description = "게시글을 등록합니다."
     )
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "조회 성공"),
+            @ApiResponse(responseCode = "200", description = "등록 성공"),
             @ApiResponse(responseCode = "401", description = "인증 실패", content = @Content(schema = @Schema(hidden = true))),
             @ApiResponse(responseCode = "403", description = "권한 부족", content = @Content(schema = @Schema(hidden = true))),
             @ApiResponse(responseCode = "404", description = "리소스 없음", content = @Content(schema = @Schema(hidden = true)))
     })
-    @GetMapping("/boards/{id}")
-    ResponseEntity<String> get(
-            @Parameter(name = "id", description = "조회할 리소스의 고유 ID", in = ParameterIn.PATH)
-            @PathVariable("id") Long id
+    @PostMapping("/posts/new")
+    ResponseEntity<CommonResponse<CreatePostResponse>> create(
+            @RequestBody final CreatePostRequest request
     );
 
-
     @Operation(
-            summary = "전체 통화 코드 목록 조회",
-            description = "입력 가능한 전체 통화 코드 목록을 반환합니다."
+            summary = "전체 게시글 상태 조회",
+            description = "전체 게시글 상태를 조회합니다."
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "조회 성공"),
     })
-    @GetMapping("/currency")
-    ResponseEntity<List<String>>  getAllCurrencyCodes();
+    @GetMapping("/post-status")
+    ResponseEntity<CommonResponse<List<String>>>  getPostStatus();
 
     @GetMapping("/error")
-    ResponseEntity<?> error();
+    ResponseEntity<CommonResponse<Void>> error();
 }
