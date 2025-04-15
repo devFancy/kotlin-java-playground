@@ -1,7 +1,8 @@
 package dev.be.core.api.controller;
 
 import com.dev.be.core.enums.CurrencyCode;
-import org.springframework.http.HttpStatus;
+import dev.be.core.api.support.error.CoreException;
+import dev.be.core.api.support.error.ErrorType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class HelloController implements HelloControllerDocs {
     }
 
     @Override
-    public ResponseEntity<Void> health() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> error() {
+        throw new CoreException(ErrorType.DEFAULT_ERROR, "에러 테스트용 데이터");
     }
 }

@@ -53,15 +53,6 @@ public interface HelloControllerDocs {
     @GetMapping("/currency")
     ResponseEntity<List<String>>  getAllCurrencyCodes();
 
-
-    @Operation(
-            summary = "헬스체크",
-            description = "서버가 정상 작동 중인지 확인합니다."
-    )
-    @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "성공"),
-            @ApiResponse(responseCode = "401", description = "인증되지 않은 접근", content = @Content(schema = @Schema(hidden = true)))
-    })
-    @GetMapping("/health")
-    ResponseEntity<Void> health();
+    @GetMapping("/error")
+    ResponseEntity<?> error();
 }
