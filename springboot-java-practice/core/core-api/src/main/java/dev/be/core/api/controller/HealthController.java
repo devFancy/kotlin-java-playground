@@ -1,5 +1,6 @@
 package dev.be.core.api.controller;
 
+import dev.be.core.api.support.response.CommonResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthController implements HealthControllerDocs {
 
     @Override
-    public ResponseEntity<Void> health() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<CommonResponse<?>> health() {
+        return ResponseEntity.ok(CommonResponse.success());
     }
 }

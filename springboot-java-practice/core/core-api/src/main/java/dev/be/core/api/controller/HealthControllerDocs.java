@@ -1,5 +1,6 @@
 package dev.be.core.api.controller;
 
+import dev.be.core.api.support.response.CommonResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,5 +23,5 @@ public interface HealthControllerDocs {
             @ApiResponse(responseCode = "401", description = "인증되지 않은 접근", content = @Content(schema = @Schema(hidden = true)))
     })
     @GetMapping("/health")
-    ResponseEntity<Void> health();
+    ResponseEntity<CommonResponse<?>> health();
 }

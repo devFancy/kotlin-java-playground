@@ -30,7 +30,7 @@ public interface ExamplePostControllerDocs {
 
     @Operation(
             summary = "특정 게시글 등록",
-            description = "게시글을 등록합니다."
+            description = "요청 정보를 기반으로 새 게시글을 등록합니다."
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "등록 성공"),
@@ -44,8 +44,8 @@ public interface ExamplePostControllerDocs {
     );
 
     @Operation(
-            summary = "전체 게시글 상태 조회",
-            description = "전체 게시글 상태를 조회합니다."
+            summary = "게시글 상태 목록 조회",
+            description = "게시글에 설정 가능한 상태 코드 목록을 조회합니다."
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "조회 성공"),
