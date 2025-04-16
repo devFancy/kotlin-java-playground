@@ -55,4 +55,7 @@ public interface ExamplePostControllerDocs {
 
     @GetMapping("/error")
     ResponseEntity<CommonResponse<Void>> error();
+
+    @GetMapping("/log")
+    ResponseEntity<CommonResponse<?>> logTest();
 }

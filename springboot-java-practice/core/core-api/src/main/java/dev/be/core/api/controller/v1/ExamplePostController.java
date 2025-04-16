@@ -7,6 +7,8 @@ import dev.be.core.api.service.ExamplePostService;
 import dev.be.core.api.support.error.CoreException;
 import dev.be.core.api.support.error.ErrorType;
 import dev.be.core.api.support.response.CommonResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +19,7 @@ import java.util.List;
 
 @RestController
 public class ExamplePostController implements ExamplePostControllerDocs {
-
+    private final Logger log = LoggerFactory.getLogger(getClass());
     private final ExamplePostService examplePostService;
 
     public ExamplePostController(final ExamplePostService examplePostService) {
@@ -42,5 +44,14 @@ public class ExamplePostController implements ExamplePostControllerDocs {
     @Override
     public ResponseEntity<CommonResponse<Void>> error() {
         throw new CoreException(ErrorType.DEFAULT_ERROR, "에러 테스트용 데이터");
+    }
+
+    @Override
+    public ResponseEntity<CommonResponse<?>> logTest() {
+        log.debug("DEBUG 레벨 로그입니다.");
+        log.info("INFO 레벨 로그입니다.");
+        log.warn("WARN 레벨 로그입니다.");
+        log.error("ERROR 레벨 로그입니다.");
+        return ResponseEntity.ok(CommonResponse.success());
     }
 }
