@@ -1,4 +1,4 @@
-# Java Spring Boot Practice (Multi-Module)
+# SpringBoot-Java-Practice (Multi-Module)
 
 This project is not meant to be a perfect design.
 It is a basic structure for practicing and learning how to build Spring Boot projects in a better way.
