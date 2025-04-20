@@ -10,10 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
@@ -25,7 +22,6 @@ import java.util.List;
         @@ 기능을 제공합니다.
     """
 )
-@RequestMapping("/api")
 public interface ExamplePostControllerDocs {
 
     @Operation(
@@ -38,7 +34,6 @@ public interface ExamplePostControllerDocs {
             @ApiResponse(responseCode = "403", description = "권한 부족", content = @Content(schema = @Schema(hidden = true))),
             @ApiResponse(responseCode = "404", description = "리소스 없음", content = @Content(schema = @Schema(hidden = true)))
     })
-    @PostMapping("/posts/new")
     ResponseEntity<CommonResponse<CreatePostResponse>> create(
             @RequestBody final CreatePostRequest request
     );
@@ -50,12 +45,9 @@ public interface ExamplePostControllerDocs {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "조회 성공"),
     })
-    @GetMapping("/post-status")
     ResponseEntity<CommonResponse<List<String>>>  getPostStatus();
 
-    @GetMapping("/error")
     ResponseEntity<CommonResponse<Void>> error();
 
-    @GetMapping("/log")
     ResponseEntity<CommonResponse<?>> logTest();
 }

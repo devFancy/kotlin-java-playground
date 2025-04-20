@@ -7,11 +7,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@RequestMapping("/api")
 public interface HealthControllerDocs {
 
     @Operation(
@@ -22,6 +19,5 @@ public interface HealthControllerDocs {
             @ApiResponse(responseCode = "200", description = "성공"),
             @ApiResponse(responseCode = "401", description = "인증되지 않은 접근", content = @Content(schema = @Schema(hidden = true)))
     })
-    @GetMapping("/health")
     ResponseEntity<CommonResponse<?>> health();
 }
