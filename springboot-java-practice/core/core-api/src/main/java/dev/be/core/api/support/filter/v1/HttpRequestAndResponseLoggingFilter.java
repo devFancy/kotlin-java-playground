@@ -1,4 +1,4 @@
-package dev.be.core.api.support.filter;
+package dev.be.core.api.support.filter.v1;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -27,7 +27,6 @@ import java.util.stream.Collectors;
 public class HttpRequestAndResponseLoggingFilter extends OncePerRequestFilter {
 
     private final Logger log = LoggerFactory.getLogger(HttpRequestAndResponseLoggingFilter.class);
-
     private static final String TRACE_ID = "traceId";
 
     @Override
@@ -35,8 +34,8 @@ public class HttpRequestAndResponseLoggingFilter extends OncePerRequestFilter {
                                     @NonNull final HttpServletResponse response,
                                     @NonNull final FilterChain filterChain) {
 
-        ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper(request);
-        ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(response);
+        final ContentCachingRequestWrapper requestWrapper = new ContentCachingRequestWrapper(request);
+        final ContentCachingResponseWrapper responseWrapper = new ContentCachingResponseWrapper(response);
 
         final String traceId = UUID.randomUUID().toString().substring(0, 32);
 
@@ -63,7 +62,7 @@ public class HttpRequestAndResponseLoggingFilter extends OncePerRequestFilter {
             try {
                 responseWrapper.copyBodyToResponse();
             } catch (IOException copyException) {
-                log.error("[RequestAndResponseLoggingFilter] I/O exception occurred while copying response body", copyException);
+                log.error("[HttpRequestAndResponseLoggingFilter] I/O exception occurred while copying response body", copyException);
             }
             MDC.remove(TRACE_ID);
         }
@@ -73,13 +72,13 @@ public class HttpRequestAndResponseLoggingFilter extends OncePerRequestFilter {
     // 관련 링크: https://docs.oracle.com/en/java/javase/16/language/pattern-matching-instanceof-operator.html
     private void handleException(final Exception e) {
         if (e instanceof IOException ioEx) {
-            log.error("[RequestAndResponseLoggingFilter] I/O exception occurred", ioEx);
+            log.error("[HttpRequestAndResponseLoggingFilter] I/O exception occurred", ioEx);
             throw new RuntimeException("I/O error occurred while processing request/response", ioEx);
         } else if (e instanceof ServletException servletEx) {
-            log.error("[RequestAndResponseLoggingFilter] Servlet exception occurred", servletEx);
+            log.error("[HttpRequestAndResponseLoggingFilter] Servlet exception occurred", servletEx);
             throw new RuntimeException("Servlet error occurred while processing request/response", servletEx);
         } else {
-            log.error("[RequestAndResponseLoggingFilter] Unknown exception occurred", e);
+            log.error("[HttpRequestAndResponseLoggingFilter] Unknown exception occurred", e);
             throw new RuntimeException("Unknown error occurred while processing request/response", e);
         }
     }

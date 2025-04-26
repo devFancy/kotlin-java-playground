@@ -1,4 +1,4 @@
-package dev.be.core.api.support.filter;
+package dev.be.core.api.support.filter.v1;
 
 import org.springframework.http.HttpStatus;
 

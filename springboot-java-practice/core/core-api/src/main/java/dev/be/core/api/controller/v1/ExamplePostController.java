@@ -20,7 +20,7 @@ import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
-@RequestMapping("/api")
+@RequestMapping("/api/v1")
 @RestController
 public class ExamplePostController implements ExamplePostControllerDocs {
     private final Logger log = LoggerFactory.getLogger(getClass());
@@ -34,7 +34,7 @@ public class ExamplePostController implements ExamplePostControllerDocs {
     @Override
     public ResponseEntity<CommonResponse<CreatePostResponse>> create(@RequestBody final CreatePostRequest request) {
         CreatePostResponse response = examplePostService.create(request);
-        return ResponseEntity.created(URI.create("/api/posts/" + response.id()))
+        return ResponseEntity.created(URI.create("/api/v1/posts/" + response.id()))
                 .body(CommonResponse.success(response));
     }
 
