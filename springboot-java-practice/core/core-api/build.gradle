@@ -14,5 +14,12 @@ dependencies {
     // h2
     runtimeOnly 'com.h2database:h2'
 
+    // test
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${swaggerVersion}")
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
 }
