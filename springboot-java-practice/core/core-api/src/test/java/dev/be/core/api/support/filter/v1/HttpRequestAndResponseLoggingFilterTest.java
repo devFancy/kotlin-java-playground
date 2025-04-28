@@ -32,7 +32,6 @@ class HttpRequestAndResponseLoggingFilterTest {
     void shouldInvokeFilterChainForLoggingUri() throws Exception {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest("GET", "/api/v1/log");
-        request.addHeader("userId", "test-user");
         MockHttpServletResponse response = new MockHttpServletResponse();
 
         // when
