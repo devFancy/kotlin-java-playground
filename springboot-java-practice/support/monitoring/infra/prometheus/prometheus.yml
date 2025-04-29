@@ -3,7 +3,7 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
-  - job_name: 'coupon-server'
+  - job_name: 'core-server'
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
