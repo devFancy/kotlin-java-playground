@@ -41,6 +41,13 @@ This module handles common logging functionality.
 It can be used across services to apply consistent logging.  
 Sentry integration can be added if needed.
 
+### support:monitoring
+
+This module provides monitoring functionalities for the application.
+
+It primarily uses Prometheus and Grafana to collect and visualize various metrics generated from the Spring Boot server.
+
+Additionally, for load testing purposes, the project utilizes k6 together with InfluxDB and Grafana to monitor and analyze system performance under high traffic.
 
 ## Reference
 
