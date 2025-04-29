@@ -11,3 +11,4 @@ rootProject.name = 'springboot-java-practice'
 include("core:core-api")
 include("core:core-enum")
 include("support:logging")
+include ("support:monitoring")
