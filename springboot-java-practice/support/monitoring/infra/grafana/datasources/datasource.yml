@@ -9,7 +9,7 @@ datasources:
     access: proxy
     url: http://prometheus:9090
     isDefault: true
-  - name: performance-influxdb
+  - name: k6-performance-influxdb
     type: influxdb
     access: proxy
     database: k6
