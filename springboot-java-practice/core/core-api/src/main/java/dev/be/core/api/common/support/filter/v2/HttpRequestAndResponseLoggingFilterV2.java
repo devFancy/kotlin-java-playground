@@ -33,7 +33,7 @@ public class HttpRequestAndResponseLoggingFilterV2 extends OncePerRequestFilter 
     private static final String UNKNOWN = "unknown";
 
     @Override
-    protected void doFilterInternal(@NonNull final HttpServletRequest request,
+    public void doFilterInternal(@NonNull final HttpServletRequest request,
                                     @NonNull final HttpServletResponse response,
                                     @NonNull final FilterChain filterChain) {
 

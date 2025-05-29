@@ -1,6 +1,5 @@
-package dev.be.core.api.support.filter.v1;
+package dev.be.core.api.common.support.filter.v1;
 
-import dev.be.core.api.common.support.filter.v1.HttpRequestAndResponseLoggingFilter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

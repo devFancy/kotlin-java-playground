@@ -30,7 +30,7 @@ public class HttpRequestAndResponseLoggingFilter extends OncePerRequestFilter {
     private static final String TRACE_ID = "traceId";
 
     @Override
-    protected void doFilterInternal(@NonNull final HttpServletRequest request,
+    public void doFilterInternal(@NonNull final HttpServletRequest request,
                                     @NonNull final HttpServletResponse response,
                                     @NonNull final FilterChain filterChain) {
 
