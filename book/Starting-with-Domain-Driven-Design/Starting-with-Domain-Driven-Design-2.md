@@ -49,7 +49,6 @@
     - 누가 되었든 간에, 추상화된 인터페이스를 고수준 모듈 관점에서 만들고, 그 인터페이스에 대한 실제 구현을 구글 지도, 네이버 지도 같은 api 가 만드는 것 → DIP
         - 역할을 추출한 것 → DIP
 
-![](/book/Starting-with-Domain-Driven-Design/img/Starting-with-Domain-Driven-Design-2-5.png)
 
 - CalculateDiscountService 입장에서 봤을 때 구현 부분은 중요치 않고, ‘고객 정보와 구매 정보에 룰을 적용해서 할인 금액을 구한다’라는 것만 중요하다. 이를 추상화한 인터페이스는 다음과 같다.
 
