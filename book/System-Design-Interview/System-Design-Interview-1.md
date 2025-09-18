@@ -7,7 +7,7 @@
 
 모든 컴포넌트가 단 한 대의 서버에서 실행되는 간단한 시스템부터 설계한다.
 
-![](/book/img/system-design-1-1.png)
+![](/book/System-Design-Interview/img/system-design-1-1.png)
 
 위와 같이 웹 서버가 클라이언트의 모든 요청을 처리한다.
 
@@ -22,7 +22,7 @@
 
 사용자가 증가하면, 단일 서버로는 부족하여 **웹/모바일 트래픽 처리 서버(웹 계층)와 데이터베이스 서버(데이터 계층)**를 분리한다. 그러면 각각의 독립적인 환경으로 확장할 수 있게 된다.
 
-![](/book/img/system-design-1-2.png)
+![](/book/System-Design-Interview/img/system-design-1-2.png)
 
 ### 어떤 데이터베이스를 사용할 것인가?
 
@@ -51,7 +51,7 @@
 
 로드밸런서는 부하 분산 집합에 속한 웹 서버들에게 트래픽 부하를 고르게 분산하는 역할을 한다.
 
-![](/book/img/system-design-1-3.png)
+![](/book/System-Design-Interview/img/system-design-1-3.png)
 
 사용자는 로드 밸런서의 공개 IP 주소로 접속해서, 웹 서버가 클라이언트의 접속을 집적 처리하지 않는다.
 
@@ -66,7 +66,7 @@
 
 많은 데이터베이스 관리 시스템은 **다중화**를 지원한다. **주(master)-부(slave) 관계**를 설정하고 데이터 원본은 **주 서버에, 사본은 부 서버**에 저장한다. 쓰기 연산은 주 서버에만 지원한다. 부 서버는 주 서버로부터 사본을 전달받으며, 읽기 연산만을 지원한다.
 
-![](/book/img/system-design-1-4.png)
+![](/book/System-Design-Interview/img/system-design-1-4.png)
 
 대부분의 애플리케이션은 **읽기 연산의 비중이 쓰기 연산보다 훨씬 많다.** 그래서 부 서버가 주 서버의 수보다 많다.
 
@@ -86,7 +86,7 @@
 
 로드밸런서와 데이터베이스를 다중화를 고려한 설계는 아래와 같다.
 
-![](/book/img/system-design-1-5.png)
+![](/book/System-Design-Interview/img/system-design-1-5.png)
 
 ## 캐시
 
@@ -100,7 +100,7 @@
 
 캐시 계층은 데이터가 잠시 보관되는 곳으로 **데이터베이스보다 훨씬 빠르다.** 별도의 캐시 계층을 두면 성능 개선 뿐 아니라 데이터베이스의 부하를 줄이며, 캐시 계층의 규모를 독립적으로 확장시킬 수 있다.
 
-![](/book/img/system-design-1-6.png)
+![](/book/System-Design-Interview/img/system-design-1-6.png)
 
 웹 서버는 원하는 데이터가 캐시 서버에 저장되어 있다면, 해당 데이터를 읽어서 클라이언트에 반환한다. 만약 캐시 서버에 저장되어 있지 않으면, 데이터베이스 쿼리를 통해 데이터를 조회하여 캐시 서버에 저장한 뒤 클라이언트에 반환한다. 이러한 캐시 전략을 **읽기 주도형 캐시 전략(read-through caching strategy)** 이라고 부른다. 이외에도 다양한 캐시 전략이 존재하는데, 캐시할 데이터 종류, 크기, 액세스 패턴에 맞는 캐시 전략을 선택하면 된다.
 
@@ -182,7 +182,7 @@ CDN이 어떻게 동작하는지 개략적으로 살펴보면 다음과 같다.
 
 무상태 아키텍처에서는 상태 정보가 필요한 경우 **공유 저장소(shard storage)**로부터 데이터를 가져온다. 이러한 상태 정보는 웹 서버로부터 물리적으로 **분리**되어 있다. 이런 구조는 단순하며, 안정적이며, 규모 확장이 쉽다.
 
-![](/book/img/system-design-1-7.png)
+![](/book/System-Design-Interview/img/system-design-1-7.png)
 
 위 그림처럼 공유 저장소는 RDBMS일 수도 있고, Memcached/Redis 같은 캐시 시스템일 수도 있으며, NoSQL일 수도 있다.
 
@@ -198,7 +198,7 @@ CDN이 어떻게 동작하는지 개략적으로 살펴보면 다음과 같다.
 
 장애가 없는 상황에서 사용자는 가장 가까운 데이터 센터로 안내되는데, 이 절차를 **지리적 라우팅**(geo-routing)이라고 부른다. 지리적 라우팅에서의 geoDNS는 사용자의 위치에 따라 도메인 이름을 어떤 IP 주소로 변환할지 결정할 수 있도록 해주는 DNS 서비스다. 만약 데이터 센터 중 하나에 심각한 장애가 발생하면 모든 트래픽은 장애가 없는 데이터 센터로 전송된다.
 
-![](/img/system-design-1-8.png)
+![](/book/System-Design-Interview/img/system-design-1-8.png)
 
 다중 데이터 센터 아키텍처를 만들기 위해서는 몇 가지 기술적인 난제를 해결해야 한다.
 
@@ -212,7 +212,7 @@ CDN이 어떻게 동작하는지 개략적으로 살펴보면 다음과 같다.
 
 메시지 큐는 **메시지 무손실**(durability, 메시지 큐에 일단 보관된 메시지는 소비자가 꺼낼 때까지 안전히 보관된다는 특성)을 보장하는, **비동기 통신을 지원하는 컴포넌트**이다.
 
-![](/img/system-design-1-9.png)
+![](/book/System-Design-Interview/img/system-design-1-9.png)
 
 생산자 또는 발행자(producer/publisher)라고 불리는 입력 서비스가 메시지를 만들어 메시지 큐에 발행(publish)하고, 소비자 혹은 구독자(consumer/subscriber)라 불리는 서버가 메시지를 받아 그에 맞는 동작을 수행하는 역할을 한다.
 
@@ -233,7 +233,7 @@ CDN이 어떻게 동작하는지 개략적으로 살펴보면 다음과 같다.
 
 위에서 설명한 개념을 적용하여 수정한 설계는 아래와 같다.
 
-![](/img/system-design-1-10.png)
+![](/book/System-Design-Interview/img/system-design-1-10.png)
 
 ## 데이터베이스의 규모 확장
 
