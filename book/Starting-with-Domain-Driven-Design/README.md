@@ -21,4 +21,6 @@
 
 [5장. 스프링 데이터 JPA를 이용한 조회 기능 && 6장 응용 서비스와 표현 영역](/book/Starting-with-Domain-Driven-Design/Starting-with-Domain-Driven-Design-5-6.md)
 
-[7장. 도메인 서비스](/book/Starting-with-Domain-Driven-Design/Starting-with-Domain-Driven-Design-7)
+[7장. 도메인 서비스](/book/Starting-with-Domain-Driven-Design/Starting-with-Domain-Driven-Design-7.md)
+
+[9장. 도메인 모델과 바운디드 컨텍스트](/book/Starting-with-Domain-Driven-Design/Starting-with-Domain-Driven-Design-9-10.md)
