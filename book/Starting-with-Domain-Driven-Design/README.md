@@ -23,4 +23,4 @@
 
 [7장. 도메인 서비스](/book/Starting-with-Domain-Driven-Design/Starting-with-Domain-Driven-Design-7.md)
 
-[9장. 도메인 모델과 바운디드 컨텍스트](/book/Starting-with-Domain-Driven-Design/Starting-with-Domain-Driven-Design-9-10.md)
+[9장. 도메인 모델과 바운디드 컨텍스트 && 10장. 이벤트 && 11장. CQRS](/book/Starting-with-Domain-Driven-Design/Starting-with-Domain-Driven-Design-9-10-11.md)
