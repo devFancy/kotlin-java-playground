@@ -23,6 +23,11 @@ import org.springframework.web.bind.annotation.RestController
 class ReviewController(
     private val reviewService: ReviewService,
 ) {
+    /**
+     * Note:
+     * 확장성을 고려해서 범용적으로 사용할 수 있도록 targetType, targetId 으로 작성함.
+     * -> 만약 상품만 고려한다면, productType, productId 로 구현할 수 있음.
+     */
     @GetMapping("/v1/reviews")
     fun getReviews(
         @RequestParam targetType: ReviewTargetType,

@@ -5,6 +5,10 @@ import io.dodn.commerce.core.support.OffsetLimit
 import io.dodn.commerce.core.support.Page
 import org.springframework.stereotype.Service
 
+/**
+ * Note:
+ * - 응집된 컴포넌트(e.g. reviewPolicyValidator)를 만들면 단위 테스트하기 좋고, 단위적으로 트랜잭션을 묶는데도 용이함.
+ */
 @Service
 class ReviewService(
     private val reviewFinder: ReviewFinder,

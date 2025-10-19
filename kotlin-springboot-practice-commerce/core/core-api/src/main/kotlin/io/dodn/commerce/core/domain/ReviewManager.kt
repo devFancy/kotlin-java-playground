@@ -11,6 +11,12 @@ import org.springframework.stereotype.Component
 class ReviewManager(
     private val reviewRepository: ReviewRepository,
 ) {
+    /**
+     * Note:
+     * (실제 서비스 환경) 리뷰에 대한 언쟁, 소송이 많기 때문에 리뷰에 대한 `히스토리` 테이블이 필요함.
+     * - 그래서 리뷰에 대한 전체 변환 이력을 히스토리 테이블(or 스냅샷)로 만들어서 쌓아둬야한다.
+     * 단, 현재 요구사항에서는 히스토리 관련 내용을 포함해두고 있지 않음.
+     */
     fun add(reviewKey: ReviewKey, target: ReviewTarget, content: ReviewContent): Long {
         val saved = reviewRepository.save(
             ReviewEntity(

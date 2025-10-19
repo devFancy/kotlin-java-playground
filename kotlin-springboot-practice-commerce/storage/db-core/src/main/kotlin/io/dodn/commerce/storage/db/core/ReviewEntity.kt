@@ -9,6 +9,10 @@ import jakarta.persistence.Index
 import jakarta.persistence.Table
 import java.math.BigDecimal
 
+/**
+ * Note:
+ * - 유니크 키를 생성한 이유
+ */
 @Entity
 @Table(
     name = "review",
