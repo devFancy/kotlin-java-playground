@@ -7,7 +7,6 @@ import io.dodn.commerce.core.support.error.CoreException
 import io.dodn.commerce.core.support.error.ErrorType
 import io.dodn.commerce.storage.db.core.ProductCategoryRepository
 import io.dodn.commerce.storage.db.core.ProductRepository
-import io.dodn.commerce.storage.db.core.ProductSectionRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Component
 class ProductFinder(
     private val productRepository: ProductRepository,
     private val productCategoryRepository: ProductCategoryRepository,
-    private val productSectionRepository: ProductSectionRepository,
 ) {
     /**
      * Note:
@@ -26,7 +24,11 @@ class ProductFinder(
      * (참고) 여기서는 정렬을 고려하지 않았음
      */
     fun findByCategory(categoryId: Long, offsetLimit: OffsetLimit): Page<Product> {
-        val categories = productCategoryRepository.findByCategoryIdAndStatus(categoryId, EntityStatus.ACTIVE, offsetLimit.toPageable())
+        val categories = productCategoryRepository.findByCategoryIdAndStatus(
+            categoryId,
+            EntityStatus.ACTIVE,
+            offsetLimit.toPageable(),
+        )
         val products = productRepository.findAllById(categories.content.map { it.productId })
             .map {
                 Product(
@@ -45,6 +47,13 @@ class ProductFinder(
         return Page(products, categories.hasNext())
     }
 
+    /**
+     * Note:
+     * 단건 조회 -> findByIdOrNull (삭제된게 아니면 Active)
+     * 이후 상품을 생성해서 리턴한다.
+     * - Price -> 중요 개념으로 별도 클래스로 생성함
+     * - 왜 Price 를 묶었을까? -> 금액 계산 같은 것들이 들어갈 수 있으므로 나중에 효용성이 있기 때문에 응집하도록 클래스를 생성했음.
+     */
     fun find(productId: Long): Product {
         val found = productRepository.findByIdOrNull(productId)?.takeIf { it.isActive() }
             ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
@@ -61,11 +70,5 @@ class ProductFinder(
                 discountedPrice = found.discountedPrice,
             ),
         )
-    }
-
-    fun findSections(productId: Long): List<ProductSection> {
-        return productSectionRepository.findByProductId(productId)
-            .filter { it.isActive() }
-            .map { ProductSection(it.type, it.content) }
     }
 }

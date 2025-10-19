@@ -13,6 +13,10 @@ class CouponService(
     private val couponTargetRepository: CouponTargetRepository,
     private val productCategoryRepository: ProductCategoryRepository,
 ) {
+    /**
+     * Note:
+     * 유저가 이 상품에 대해서 다운로드 받을 수 있는 쿠폰을 조회하는 로직
+     */
     fun getCouponsForProducts(productIds: Collection<Long>): List<Coupon> {
         val productTargets = couponTargetRepository.findByTargetTypeAndTargetIdInAndStatus(
             CouponTargetType.PRODUCT,
