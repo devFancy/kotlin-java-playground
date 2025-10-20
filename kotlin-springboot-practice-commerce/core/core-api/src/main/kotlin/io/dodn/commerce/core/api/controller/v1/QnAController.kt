@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
+/**
+ * Note:
+ * - 답변 기능은 '어드민' 쪽 API라고 정의했음
+ * - 라이프사이클이 다르기 때문에 여기 코드에는 제외되어 있음.
+ */
 @RestController
 class QnAController(
     private val qnaService: QnAService,

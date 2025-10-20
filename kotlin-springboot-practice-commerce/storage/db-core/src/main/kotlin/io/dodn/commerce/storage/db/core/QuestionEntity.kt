@@ -8,7 +8,9 @@ import jakarta.persistence.Table
 @Table(name = "question")
 class QuestionEntity(
     val userId: Long,
-    // NOTE: QNA 는 아예 상품 전용으로 지정
+    /**
+     * NOTE: QNA 는 아예 상품 전용으로 지정 -> 개념적으로 Q, A는 상품에 의존하도록 만듬.
+     */
     val productId: Long,
     title: String,
     content: String,

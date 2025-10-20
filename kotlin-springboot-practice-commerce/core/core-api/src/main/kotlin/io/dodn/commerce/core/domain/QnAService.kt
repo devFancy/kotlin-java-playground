@@ -11,6 +11,13 @@ import io.dodn.commerce.storage.db.core.QuestionRepository
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 
+/**
+ * Note:
+ * - 이런 느낌의 코드도 흔하게 있음.
+ * - CRUD -> 간단하면 심플하게 끝날 수 있음.
+ * - (강의자 생각) 소프트웨어가 점점 커진다는 기준에서 서비스 쪽에 트랜잭션을 거는걸 선호하지 않음.
+ * - '간단한 부분은 이런 식으로 구현했다' 라는 식으로 이해하면 좋다.
+ */
 @Service
 class QnAService(
     private val questionRepository: QuestionRepository,
@@ -45,6 +52,10 @@ class QnAService(
         )
     }
 
+    /**
+     * Note:
+     * - 상품에 강결합된 개념이라고 보면 된다.
+     */
     fun addQuestion(user: User, productId: Long, content: QuestionContent): Long {
         val saved = questionRepository.save(
             QuestionEntity(
@@ -72,7 +83,7 @@ class QnAService(
     }
 
     /**
-     * NOTE: 답변은어드민 쪽 기능임
+     * NOTE: 답변은어드민 쪽 기능임 -> 별도 서버 또는 별도 API 에 있다고 봐주시면 된다.
      * fun addAnswer(user: User, questionId: Long, content: String): Long {...}
      * fun updateAnswer(user: User, answerId: Long, content: String): Long {...}
      * fun removeAnswer(user: User, answerId: Long): Long {...}
