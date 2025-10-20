@@ -15,6 +15,10 @@ import java.time.LocalDateTime
 class FavoriteService(
     private val favoriteRepository: FavoriteRepository,
 ) {
+    /**
+     * Note:
+     * - 요구사항: 30일 이내에 찜 목록만 조회한다.
+     */
     fun findFavorites(user: User, offsetLimit: OffsetLimit): Page<Favorite> {
         val cutoff = LocalDateTime.now().minusDays(30)
         val result = favoriteRepository.findByUserIdAndStatusAndUpdatedAtAfter(
@@ -54,6 +58,10 @@ class FavoriteService(
         }
     }
 
+    /**
+     * Note:
+     * - Tip: 실제로 데이터를 삭제하지 않고, 삭제하는 상태로 바꾼다. -> 이후 데이터 분석 or 사용자 추적을 위해서.
+     */
     @Transactional
     fun removeFavorite(user: User, productId: Long): Long {
         val existing = favoriteRepository.findByUserIdAndProductId(user.id, productId)

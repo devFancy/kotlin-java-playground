@@ -28,6 +28,11 @@ class FavoriteController(
         return ApiResponse.success(PageResponse(FavoriteResponse.of(page.content), page.hasNext))
     }
 
+    /**
+     * Note:
+     * - 따닥 이슈 -> 간단한 해결 방안: 따닥을 누를 때 '즐겨찾기'를 추가하는 타입을 보내게 되면, 찜을 누르게 되는 상태로 유지될 수 있다.
+     * - 단순하고 심플한 분기문에 대한 건 허용한다. (단, 비즈니스 적으로 뭔가 처리하는건 절대 하지 않는다.) -> 트레이드오프
+     */
     @PostMapping("/v1/favorites")
     fun applyFavorite(
         user: User,
