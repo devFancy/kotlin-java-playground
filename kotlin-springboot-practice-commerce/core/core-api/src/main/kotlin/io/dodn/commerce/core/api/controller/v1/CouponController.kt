@@ -1,6 +1,7 @@
 package io.dodn.commerce.core.api.controller.v1
 
 import io.dodn.commerce.core.api.controller.v1.response.OwnedCouponResponse
+import io.dodn.commerce.core.domain.CouponService
 import io.dodn.commerce.core.domain.OwnedCouponService
 import io.dodn.commerce.core.domain.User
 import io.dodn.commerce.core.support.response.ApiResponse
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class CouponController(
+    private val couponService: CouponService,
     private val ownedCouponService: OwnedCouponService,
 ) {
     @PostMapping("/v1/coupons/{couponId}/download")
@@ -18,7 +20,7 @@ class CouponController(
         user: User,
         @PathVariable couponId: Long,
     ): ApiResponse<Any> {
-        ownedCouponService.download(user, couponId)
+        couponService.download(user, couponId)
         return ApiResponse.success()
     }
 
