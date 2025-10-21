@@ -15,6 +15,10 @@ class PointHandler(
     private val pointBalanceRepository: PointBalanceRepository,
     private val pointHistoryRepository: PointHistoryRepository,
 ) {
+    /**
+     * Note:
+     * - 포인트를 적립하는 기능: 취소, 결제, 리뷰 생성
+     */
     @Transactional
     fun earn(user: User, type: PointType, targetId: Long, amount: BigDecimal) {
         if (amount == BigDecimal.ZERO) return
@@ -33,6 +37,10 @@ class PointHandler(
         )
     }
 
+    /**
+     * Note:
+     * - 포인트를 차감하는 기능: 취소, 결제, 리뷰 삭제
+     */
     @Transactional
     fun deduct(user: User, type: PointType, targetId: Long, amount: BigDecimal) {
         if (amount == BigDecimal.ZERO) return
