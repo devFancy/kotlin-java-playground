@@ -14,6 +14,12 @@ class CartService(
     private val cartItemRepository: CartItemRepository,
     private val productRepository: ProductRepository,
 ) {
+    /**
+     * Note:
+     * - Cart: 논리적인 개념 - Cart의 Items을 모은 것.
+     * - 실제 상품 가격으로 주문이 되기 때문에, CartItem 쪽에 상품 가격을 두진 않음.
+     * -> 상품에 있는 가격을 가져와서 사용한다.
+     */
     fun getCart(user: User): Cart {
         val items = cartItemRepository.findByUserIdAndStatus(user.id, EntityStatus.ACTIVE)
         val productMap = productRepository.findAllById(items.map { it.productId })
@@ -65,6 +71,10 @@ class CartService(
         return found.id
     }
 
+    /**
+     * Note:
+     * - 삭제할 때 실제로 삭제를 하지 않고, '삭제' 상태로 변경하여 관리한다.
+     */
     @Transactional
     fun deleteCartItem(user: User, cartItemId: Long) {
         val entity = cartItemRepository.findByUserIdAndIdAndStatus(user.id, cartItemId, EntityStatus.ACTIVE)

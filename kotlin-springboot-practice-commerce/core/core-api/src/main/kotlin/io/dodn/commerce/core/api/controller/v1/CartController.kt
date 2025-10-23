@@ -31,6 +31,10 @@ class CartController(
         return ApiResponse.success()
     }
 
+    /**
+     * Note:
+     * - CartItem 의 수량을 가져오도록 클라이언트 개발자와 협의했다고 가정함.
+     */
     @PutMapping("/v1/cart/items/{cartItemId}")
     fun modifyCartItem(
         user: User,

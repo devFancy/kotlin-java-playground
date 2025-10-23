@@ -59,6 +59,7 @@ class OrderController(
         )
     }
 
+    // 주문 화면을 그린 API
     @GetMapping("/v1/orders/{orderKey}/checkout")
     fun findOrderForCheckout(
         user: User,
@@ -70,12 +71,14 @@ class OrderController(
         return ApiResponse.success(OrderCheckoutResponse.of(order, ownedCoupons, pointBalance))
     }
 
+    // 주문 목록
     @GetMapping("/v1/orders")
     fun getOrders(user: User): ApiResponse<List<OrderListResponse>> {
         val orders = orderService.getOrders(user)
         return ApiResponse.success(OrderListResponse.of(orders))
     }
 
+    // 주문 목록에서 상세 페이지(주문 상세 정보)
     @GetMapping("/v1/orders/{orderKey}")
     fun getOrder(
         user: User,

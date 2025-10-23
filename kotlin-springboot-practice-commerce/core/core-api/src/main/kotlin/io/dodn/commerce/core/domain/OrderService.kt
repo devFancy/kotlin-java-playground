@@ -20,6 +20,14 @@ class OrderService(
     private val orderItemRepository: OrderItemRepository,
     private val productRepository: ProductRepository,
 ) {
+    /**
+     * Note:
+     * - 상품이 존재하는지 여부
+     *  - 주문을 하는 순간, 상품이 삭제될 수 있으므로 해당 유효성 검사를 포함하고 있다.
+     *  - 금액은 `서버`에서 처리해준다. -> totalPrice
+     *  - 주문 ID를 노출하지 않기 위해 일반적으로 대체키로 구현함. -> orderKey = orderKeyGenerator.generate()
+     * - 주문 생성할 때, 주문을 만드는 순간부터 DB에 저장하는게 가장 안정적이면서 데이터를 핸들링하거나 운영하기 편함.
+     */
     @Transactional
     fun create(user: User, newOrder: NewOrder): String {
         val orderProductIds = newOrder.items.map { it.productId }.toSet()
@@ -39,7 +47,7 @@ class OrderService(
         orderItemRepository.saveAll(
             newOrder.items.map {
                 val product = productMap[it.productId]!!
-                OrderItemEntity(
+                OrderItemEntity( // 상품과 1대1로 Mapping
                     orderId = savedOrder.id,
                     productId = product.id,
                     productName = product.name,
