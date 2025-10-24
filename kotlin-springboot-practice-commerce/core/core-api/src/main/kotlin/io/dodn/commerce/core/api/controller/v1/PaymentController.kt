@@ -22,6 +22,10 @@ class PaymentController(
     private val ownedCouponService: OwnedCouponService,
     private val pointService: PointService,
 ) {
+    /**
+     * Note
+     * - 결제를 하기 위한 개념적인 틀을 만들고 DB에 저장해놓은 역할.
+     */
     @PostMapping("/v1/payments")
     fun create(
         user: User,
@@ -37,6 +41,13 @@ class PaymentController(
         return ApiResponse.success(CreatePaymentResponse(id))
     }
 
+    /**
+     * Note:
+     * (토스페이먼츠 PG 사 스펙으로 되어있음)
+     * - 아래 2개의 API는 PG사와의 연동 부분.
+     * - PG사로부터 성공/실패에 대한 콜백을 우리 서버로 보내준다.
+     * - 아래 파라미터 3개는 PG 사의 파라미터 규칙임 -> 규격 문서가 있음.
+     */
     @PostMapping("/v1/payments/callback/success")
     fun callbackForSuccess(
         @RequestParam orderId: String,

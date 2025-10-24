@@ -8,6 +8,10 @@ import jakarta.persistence.Table
 import java.math.BigDecimal
 import java.time.LocalDateTime
 
+/**
+ * Note
+ * - 주문의 성공/여부를 파악할 때 사용하는 엔티티.
+ */
 @Entity
 @Table(name = "transaction_history")
 class TransactionHistoryEntity(

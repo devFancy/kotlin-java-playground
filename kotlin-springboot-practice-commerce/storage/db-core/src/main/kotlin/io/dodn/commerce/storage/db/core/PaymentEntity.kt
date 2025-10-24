@@ -17,6 +17,7 @@ import java.time.LocalDateTime
         Index(name = "udx_order_id", columnList = "orderId", unique = true),
     ],
 )
+// 외부에 따라 달라지는 데이터들을 담는 테이블
 class PaymentEntity(
     val userId: Long,
     val orderId: Long,
@@ -26,10 +27,10 @@ class PaymentEntity(
     val usedPoint: BigDecimal,
     val paidAmount: BigDecimal,
     state: PaymentState,
-    externalPaymentKey: String? = null,
-    method: PaymentMethod? = null,
-    approveCode: String? = null,
-    paidAt: LocalDateTime? = null,
+    externalPaymentKey: String? = null, // PG 외부사의 key
+    method: PaymentMethod? = null, // PG 외부사의 결제수단
+    approveCode: String? = null, // PG 외부
+    paidAt: LocalDateTime? = null, // PG 외부
 ) : BaseEntity() {
     @Enumerated(EnumType.STRING)
     var state: PaymentState = state

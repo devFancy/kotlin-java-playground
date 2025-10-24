@@ -32,6 +32,7 @@ data class PaymentDiscount(
 
     fun paidAmount(orderPrice: BigDecimal): BigDecimal {
         val amount = orderPrice - (couponDiscount + usePointAmount)
+        // 최소한의 결제 금액도 고려해볼 수 있음 -> 현재는 0원 결제도 허용이 되도록 구현함.
         if (amount < BigDecimal.ZERO) throw CoreException(ErrorType.PAYMENT_INVALID_AMOUNT)
         return amount
     }
