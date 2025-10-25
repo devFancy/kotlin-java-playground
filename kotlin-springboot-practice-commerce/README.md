@@ -83,7 +83,7 @@ PO/PM이 무슨 생각인지 요구사항을 이해해보고 질문을 던질 �
 
 ## 요구사항 느끼기
 
-![](/img/gemini-commerce/Gemini-Commerce-Product-Detail.png)
+![](./img/gemini-commerce/Gemini-Commerce-Product-Detail.png)
 
 - 아래와 같은 요구사항이 추가될 수 있다.
     - 상품 이름, 상품 설명(Short Information), 상품 가격
@@ -122,7 +122,7 @@ PO/PM이 무슨 생각인지 요구사항을 이해해보고 질문을 던질 �
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-Product-Detail-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-Product-Detail-Concept.png)
 
 - 상품이 직접적으로 리뷰, 쿠폰을 아는 상태가 아님.
     - API는 클라이언트에게 제공하기 위한 스팩으로,
@@ -166,7 +166,7 @@ PO/PM이 무슨 생각인지 요구사항을 이해해보고 질문을 던질 �
 
 ## 요구사항 느끼기
 
-![](/img/gemini-commerce/Gemini-Commerce-Review.png)
+![](./img/gemini-commerce/Gemini-Commerce-Review.png)
 
 - 리뷰 작성하기
 - 별점, 리뷰 내용
@@ -206,7 +206,7 @@ PO/PM이 무슨 생각인지 요구사항을 이해해보고 질문을 던질 �
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-Review-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-Review-Concept.png)
 
 - 위 그림처럼 Order, Point 를 직접적으로 참조하므로 격벽을 넘는다고 볼 수 있다.
 
@@ -251,7 +251,7 @@ PO/PM이 무슨 생각인지 요구사항을 이해해보고 질문을 던질 �
 
 ## 요구사항 느끼기
 
-![](/img/gemini-commerce/Gemini-Commerce-QnA.png)
+![](./img/gemini-commerce/Gemini-Commerce-QnA.png)
 
 현실적으로 생각할 수 있는 부분들을 고려해보자.
 
@@ -286,7 +286,7 @@ PO/PM이 무슨 생각인지 요구사항을 이해해보고 질문을 던질 �
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-QnA-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-QnA-Concept.png)
 
 QnA를 명시적으로 만들었음.
 
@@ -328,7 +328,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 요구사항 느끼기
 
-![](/img/gemini-commerce/Gemini-Commerce-Favorite.png)
+![](./img/gemini-commerce/Gemini-Commerce-Favorite.png)
 
 위 그림은 '조회' 화면으로 보면 된다. -> 찜목록을 보여달라는 요구사항이 들어왔다.
 
@@ -359,7 +359,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-Favorite-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-Favorite-Concept.png)
 
 찜하기는 요구사항이 심플하게 정리가 되면 개념과 구현 자체는 간단하다.
 
@@ -397,7 +397,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 요구사항 느끼기
 
-![](/img/gemini-commerce/Gemini-Commerce-Point.png)
+![](./img/gemini-commerce/Gemini-Commerce-Point.png)
 
 위 그림은 포인트 조회 화면이라고 이해하면 된다.
 
@@ -432,7 +432,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-Point-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-Point-Concept.png)
 
 포인트는 리뷰, 결제할 때 적립 또는 차감되는 방식이다.
 - PointBalance : 돈통 역할(총 포인트 잔액)
@@ -449,13 +449,13 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 `쿠폰`은 복잡한 도메인 중 하나라고 생각한다.
 
-![](/img/gemini-commerce/Gemini-Commerce-Coupon-1.png)
+![](./img/gemini-commerce/Gemini-Commerce-Coupon-1.png)
 
 기획으로부터 위와 같이 쿠폰 목록을 쭉 보여달라는 요구사항이 주어졌다.
 
 사실 이 보다 더 중요한 것은 쿠폰이 어디로부터 생긴것인지에 대해 알아야 한다. (바로 아래)
 
-![](/img/gemini-commerce/Gemini-Commerce-Coupon-2.png)
+![](./img/gemini-commerce/Gemini-Commerce-Coupon-2.png)
 
 위와 같이 쿠폰을 다운로드 받는 곳이 `상품 상세` 쪽이다.
 
@@ -475,7 +475,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 발급 수량 제한
 - 쿠폰에 대한 재고 관리 -> 정률제 or 정액제
 
-![](/img/gemini-commerce/Gemini-Commerce-Coupon-3.png)
+![](./img/gemini-commerce/Gemini-Commerce-Coupon-3.png)
 
 위 그림은 "유저가 다운로드 받은 쿠폰 (목록)" 이다. 다음과 같이 생각해볼 수 있다.
 - 만료된 쿠폰도 UI에 보여줘야 하는건지 (-> 보통 나오긴 한다.)
@@ -502,7 +502,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-Coupon-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-Coupon-Concept.png)
 
 쿠폰, 소유한 쿠폰(다운로드 받은 쿠폰)
 
@@ -520,7 +520,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 요구사항 느끼기
 
-![](/img/gemini-commerce/Gemini-Commerce-Cart.png)
+![](./img/gemini-commerce/Gemini-Commerce-Cart.png)
 
 - 위 그림에서 질문을 할 부분들이 상당히 많다.
   - 장바구니에 상품을 담았는데, 상품에 대한 유효기간이 남아있는지, 없는지
@@ -548,7 +548,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-Cart-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-Cart-Concept.png)
 
 실제 `Cart`라는 개념은 유저가 한 가지 카트를 끌고 다니는 모습이라고 보면 된다.
 - 현실 세계에 있는 것들을 활용해서 개념을 정리하는 것도 소프트웨어를 만들어나가는데 중요한 부분이다.
@@ -566,7 +566,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 요구사항 느끼기
 
-![](/img/gemini-commerce/Gemini-Commerce-Order-1.png)
+![](./img/gemini-commerce/Gemini-Commerce-Order-1.png)
 
 위 그림에 대해 여러 고민거리를 생각해볼 수 있다.
 - 쿠폰에 대한 정책
@@ -582,7 +582,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ---
 
-![](/img/gemini-commerce/Gemini-Commerce-Order-2.png)
+![](./img/gemini-commerce/Gemini-Commerce-Order-2.png)
 
 위 그림은 `주문에 대한 흐름도` 이다.
 - 요구사항 만으로 이해하기 어려울 경우, 흐름도를 작성해볼 수 있다.
@@ -606,7 +606,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-Order-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-Order-Concept.png)
 
 위 그림과 같은 Order 는 Product 에 의존하고 있다.
 - Cart 역시 Product 에 의존하고 있다.
@@ -627,7 +627,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 요구사항 느끼기
 
-![](/img/gemini-commerce/Gemini-Commerce-Payment.png)
+![](./img/gemini-commerce/Gemini-Commerce-Payment.png)
 
 위와 같이 "흐름도"만 가져온 상태.
 
@@ -651,7 +651,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-Payment-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-Payment-Concept.png)
 
 위와 같이 우리 서비스에 주문이 더 중요하다고 생각한다.
 - 결제는 외부와 소통한다.
@@ -674,7 +674,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 요구사항 느끼기
 
-![](/img/gemini-commerce/Gemini-Commerce-Cancel.png)
+![](./img/gemini-commerce/Gemini-Commerce-Cancel.png)
 
 "결제를 취소해달라" 라는 요구사항이 있다. (부분 취소는 제외함)
 - 취소는 무제한인지 / 30일 혹은 7일 이내로 취소가 가능한지
@@ -688,7 +688,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 취소 단위가 '상품'이든지 와 같이 기본적인 케이스를 느끼보면 좋겠다.
 
-![](/img/gemini-commerce/Gemini-Commerce-Cancel-Requirement.png)
+![](./img/gemini-commerce/Gemini-Commerce-Cancel-Requirement.png)
 
 위 그림처럼 요구사항을 다시볼 수 있다.
 
@@ -740,7 +740,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-Cancel-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-Cancel-Concept.png)
 
 취소는 주문을 바라보고 있는 상태
 - 물론, PG 사와의 소통을 위해 결제를 참조하고 있다.
@@ -785,7 +785,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 요구사항 느끼기
 
-![](/img/gemini-commerce/Gemini-Commerce-Settlement.png)
+![](./img/gemini-commerce/Gemini-Commerce-Settlement.png)
 
 결제건이 언제 기준으로 정산이 되어야 하는가?
 - 어제 결제났던 것들 기준으로 정산을 만들어야 하는건지
@@ -807,7 +807,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 취소건을 포함해서 요구사항을 다시보면 아래 그림과 같다.
 
-![](/img/gemini-commerce/Gemini-Commerce-Settlement-Requirement.png)
+![](./img/gemini-commerce/Gemini-Commerce-Settlement-Requirement.png)
 
 취소건도 반영해야 정산을 반영해야 한다.
 
@@ -831,7 +831,7 @@ Q&A 개념에서 질문은 어떤 요소에 명시적으로 의존성을 가질�
 
 ## 개념 정리
 
-![](/img/gemini-commerce/Gemini-Commerce-Settlement-Concept.png)
+![](./img/gemini-commerce/Gemini-Commerce-Settlement-Concept.png)
 
 개념적으로 소프트웨어를 만들다보면 OrderItem 까지 사용된다는 것을 볼 수 있다.
 
