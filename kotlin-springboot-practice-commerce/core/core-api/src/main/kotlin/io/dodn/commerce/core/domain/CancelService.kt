@@ -42,7 +42,7 @@ class CancelService(
          */
 
         order.canceled()
-
+        // 결제의 상태는 변경하지 않음. -> 주문을 중심축으로 가고자 했던 이유. (주문 -> 취소)
         if (payment.hasAppliedCoupon()) {
             ownedCouponRepository.findByIdOrNull(payment.ownedCouponId)?.revert()
         }
