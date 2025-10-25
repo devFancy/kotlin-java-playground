@@ -24,6 +24,12 @@ class SettlementTargetLoader(
     ) {
         val orderItems: List<OrderItemEntity> = orderItemRepository.findByOrderIdIn(transactionIdMap.keys)
 
+        /**
+         * Note:
+         * - merchant: 가맹점
+         * - merchantMappingMap: 상품별로 어떤 가맹점이 우리에게 넘겨준 상품인지 매핑한다.
+         * - SettlementTarget: 정산 기반 데이터이자 중간 적재 테이블 역할 (흐름: 결제/취소 -> "정산 중간 적재" -> 정산)
+         */
         val merchantMappingMap = merchantProductMappingRepository
             .findByProductIdIn(orderItems.map { it.productId }.toSet())
             .associateBy { it.productId }
@@ -40,8 +46,8 @@ class SettlementTargetLoader(
                 unitPrice = item.unitPrice,
                 totalPrice = item.totalPrice,
                 targetAmount = when (transactionType) {
-                    TransactionType.PAYMENT -> item.totalPrice
-                    TransactionType.CANCEL -> item.totalPrice.negate()
+                    TransactionType.PAYMENT -> item.totalPrice // 양수
+                    TransactionType.CANCEL -> item.totalPrice.negate() // 음수
                     else -> throw UnsupportedOperationException()
                 },
             )

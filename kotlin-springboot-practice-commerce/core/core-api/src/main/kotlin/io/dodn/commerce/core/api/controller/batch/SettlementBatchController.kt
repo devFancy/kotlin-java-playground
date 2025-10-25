@@ -11,6 +11,12 @@ import java.time.LocalDate
 class SettlementBatchController(
     private val settlementService: SettlementService,
 ) {
+
+    /**
+     * Note:
+     * - (Tip) loadTargets 중요한 이유: 메인에 필요한 기반 데이터를 잘 만들어 놓으면 기반 데이터 이후의 작업이 간결해질 수 있다.
+     */
+
     /**
      * NOTE: 정산 대상 적재 배치
      * - 오전 1시 실행

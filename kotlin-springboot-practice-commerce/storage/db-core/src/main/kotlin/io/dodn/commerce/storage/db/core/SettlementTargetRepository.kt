@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query
 import java.time.LocalDate
 
 interface SettlementTargetRepository : JpaRepository<SettlementTargetEntity, Long> {
+    // 가맹점별 정산 일자에 정산해야 하는 금액을 연산하게 함.
     @Query(
         """
         SELECT new io.dodn.commerce.storage.db.core.SettlementTargetSummary(

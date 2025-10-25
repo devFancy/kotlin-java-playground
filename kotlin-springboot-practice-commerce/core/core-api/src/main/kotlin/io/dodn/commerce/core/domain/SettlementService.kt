@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.LocalDateTime
-import kotlin.collections.iterator
 
 @Service
 class SettlementService(
@@ -30,6 +29,12 @@ class SettlementService(
 ) {
     private val log: Logger = LoggerFactory.getLogger(javaClass)
 
+    /**
+     * Note:
+     * - 큰 정산 로직(정산 대상 적재 배치, 정산 계산 배치, 정산 입금 배치)을 끊어서 배치로 나눠놨다고 생각하면 된다.
+     * - 테스트코드 작성 시 settlementTarget 데이터를 만들어 놓고 calculate 에 대한 통합 테스트코드를 작성해본다든지
+     * - 혹은 loadTargets 에 대해 단위 테스트코드를 작성해보면 좋을 것 같다.
+     */
     fun loadTargets(settleDate: LocalDate, from: LocalDateTime, to: LocalDateTime) {
         var paymentPageable: Pageable = PageRequest.of(0, 1000, Sort.by(Sort.Direction.ASC, "id"))
         do {
