@@ -3,8 +3,6 @@ fun main() {
 
     val myObject = MyClass()
 //    myObject.callMe() // Error: Unresolved reference: callMe
-
-    Button
 }
 
 // Note: 4.4.1
