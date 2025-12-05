@@ -2,6 +2,7 @@ package io.dodn.commerce.core.domain
 
 import io.dodn.commerce.ContextTest
 import io.dodn.commerce.core.enums.OrderState
+import io.dodn.commerce.core.enums.PaymentMethod
 import io.dodn.commerce.core.enums.PaymentState
 import io.dodn.commerce.core.enums.PointType
 import io.dodn.commerce.storage.db.core.OrderEntity
@@ -66,14 +67,23 @@ class PaymentServiceTest(
             ),
         )
 
-        // when
-        val resultPaymentId = paymentService.success(orderKey, "PG-EXT-KEY", paidAmount)
+        // 외부 결제 결과 객체 생성 (PG사에서 응답받았다고 가정)
+        val paymentResult = PaymentResult(
+            externalPaymentKey = "PG-EXT-KEY",
+            method = PaymentMethod.CARD,
+            approveNo = "APPROVE-1234",
+            message = "결제 성공",
+        )
 
+        // when
+        val resultPaymentId = paymentService.completePayment(orderKey, paymentResult)
         // then
         // payment updated
         val updatedPayment = paymentRepository.findById(resultPaymentId).orElseThrow()
         assertThat(updatedPayment.state).isEqualTo(PaymentState.SUCCESS)
         assertThat(updatedPayment.externalPaymentKey).isEqualTo("PG-EXT-KEY")
+        assertThat(updatedPayment.method).isEqualTo(PaymentMethod.CARD)
+        assertThat(updatedPayment.approveCode).isEqualTo("APPROVE-1234")
 
         // order updated
         val updatedOrder = orderRepository.findById(order.id).orElseThrow()
