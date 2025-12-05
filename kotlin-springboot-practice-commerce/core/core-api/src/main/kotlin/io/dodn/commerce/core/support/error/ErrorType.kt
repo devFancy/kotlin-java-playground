@@ -15,6 +15,8 @@ enum class ErrorType(val status: HttpStatus, val code: ErrorCode, val message: S
     PAYMENT_INVALID_STATE(HttpStatus.BAD_REQUEST, ErrorCode.E2000, "결제 상태가 유효하지 않습니다.", LogLevel.INFO),
     PAYMENT_AMOUNT_MISMATCH(HttpStatus.BAD_REQUEST, ErrorCode.E2001, "결제 금액이 일치하지 않습니다.", LogLevel.INFO),
     PAYMENT_INVALID_AMOUNT(HttpStatus.BAD_REQUEST, ErrorCode.E2002, "결제 금액이 0보다 작을 수 없습니다.", LogLevel.INFO),
+    PAYMENT_EXTERNAL_API_FAIL(HttpStatus.BAD_GATEWAY, ErrorCode.E2003, "결제 시스템 연동 중 오류가 발생했습니다.", LogLevel.ERROR),
+    PAYMENT_EXTERNAL_API_BODY_EMPTY(HttpStatus.BAD_GATEWAY, ErrorCode.E2004, "결제 응답을 처리하는 중 오류가 발생했습니다.", LogLevel.ERROR),
 
     // 상품
     PRODUCT_MISMATCH_IN_ORDER(HttpStatus.BAD_REQUEST, ErrorCode.E3000, "요청한 상품 정보와 일치하지 않습니다.", LogLevel.INFO),

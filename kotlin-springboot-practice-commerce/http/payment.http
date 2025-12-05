@@ -1,0 +1,7 @@
+### 결제 승인 (성공 케이스)
+POST http://localhost:8080/v1/payments/callback/success?orderId=ORDER_TEST_HOODIE&paymentKey=payment_key_test&amount=25000
+Content-Type: application/json
+
+### 결제 승인 (실패 케이스 - 잔액 부족 등)
+POST http://localhost:8080/v1/payments/callback/fail?orderId=ORDER_TEST_HOODIE&code=PAYMENT_REJECTED&message=잔액부족
+Content-Type: application/json

@@ -12,6 +12,8 @@ enum class ErrorCode {
     E2000,
     E2001,
     E2002,
+    E2003,
+    E2004,
 
     // 상품
     E3000,

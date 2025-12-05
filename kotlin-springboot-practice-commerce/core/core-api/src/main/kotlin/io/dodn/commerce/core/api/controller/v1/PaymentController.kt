@@ -8,6 +8,7 @@ import io.dodn.commerce.core.domain.PaymentService
 import io.dodn.commerce.core.domain.PointService
 import io.dodn.commerce.core.domain.User
 import io.dodn.commerce.core.enums.OrderState
+import io.dodn.commerce.core.facade.PaymentConfirmFacade
 import io.dodn.commerce.core.support.response.ApiResponse
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -17,6 +18,7 @@ import java.math.BigDecimal
 
 @RestController
 class PaymentController(
+    private val paymentConfirmFacade: PaymentConfirmFacade,
     private val paymentService: PaymentService,
     private val orderService: OrderService,
     private val ownedCouponService: OwnedCouponService,
@@ -54,7 +56,7 @@ class PaymentController(
         @RequestParam paymentKey: String,
         @RequestParam amount: BigDecimal,
     ): ApiResponse<Any> {
-        paymentService.success(
+        paymentConfirmFacade.success(
             orderKey = orderId,
             externalPaymentKey = paymentKey,
             amount = amount,
@@ -68,7 +70,7 @@ class PaymentController(
         @RequestParam code: String,
         @RequestParam message: String,
     ): ApiResponse<Any> {
-        paymentService.fail(
+        paymentConfirmFacade.fail(
             orderKey = orderId,
             code = code,
             message = message,
