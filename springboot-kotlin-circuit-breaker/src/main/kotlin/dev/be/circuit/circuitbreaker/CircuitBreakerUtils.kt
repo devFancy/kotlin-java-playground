@@ -19,3 +19,5 @@ fun Throwable.convertToCustomException(): Throwable = when (this) {
     is CallNotPermittedException -> CircuitOpenException()
     else -> this
 }
+
+class CircuitOpenException(message: String = "Circuit breaker is open") : RuntimeException(message)

@@ -32,5 +32,3 @@ class DefaultCircuitBreaker(
         }
     }
 }
-
-class CircuitOpenException(message: String = "Circuit breaker is open") : RuntimeException(message)
