@@ -3,13 +3,13 @@ resilience4j:
   circuitbreaker:
     configs:
       default:
-        minimum-number-of-calls: 5   # 집계에 필요한 최소 호출 수
-        sliding-window-size: 5   # 서킷 CLOSE 상태에서 N회 호출 도달 시 failureRateThreshold 실패 비율 계산
-        failure-rate-threshold: 10   # 실패 10% 이상 시 서킷 오픈
+        minimum-number-of-calls: 5          # 집계에 필요한 최소 호출 수
+        sliding-window-size: 5              # CLOSED 상태에서 최근 N회 호출을 기준으로 실패율(failureRateThreshold) 계산
+        failure-rate-threshold: 10          # 실패 10% 이상 시 OPEN 상태로 전환
         slow-call-duration-threshold: 500   # 500ms 이상 소요 시 실패로 간주
-        slow-call-rate-threshold: 10   # slowCallDurationThreshold 초과 비율이 10% 이상 시 서킷 오픈
-        wait-duration-in-open-state: 10000   # OPEN -> HALF-OPEN 전환 전 기다리는 시간
-        permitted-number-of-calls-in-half-open-state: 5   # HALFOPEN -> CLOSE or OPEN 으로 판단하기 위해 호출 횟수
+        slow-call-rate-threshold: 10        # slowCallDurationThreshold 초과 비율이 10% 이상 시 OPEN 상태로 전환
+        wait-duration-in-open-state: 10000  # OPEN -> HALF_OPEN 전환 전 대기 시간 (ms)
+        permitted-number-of-calls-in-half-open-state: 5   # HALF_OPEN -> CLOSE or OPEN 으로 판단하기 위해 허용할 호출 횟수
         registerHealthIndicator: true # actuator 에서 상태 확인 가능, http://localhost:8080/actuator/circuitbreakers
 
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 interface CircuitBreaker {
     /**
      * @param name 서킷 브레이커 설정 이름 (기본값: "default")
-     * @param block 실행할 로직
+     * @param block 서킷 브레이커로 보호하며 실행할 로직
      */
     fun <T> run(name: String = "default", block: () -> T): Result<T>
 }
