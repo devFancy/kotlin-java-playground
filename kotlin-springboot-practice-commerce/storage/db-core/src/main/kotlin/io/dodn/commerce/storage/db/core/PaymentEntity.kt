@@ -48,6 +48,11 @@ class PaymentEntity(
     var paidAt: LocalDateTime? = paidAt
         protected set
 
+    fun inProgress(externalPaymentKey: String) {
+        this.state = PaymentState.IN_PROGRESS
+        this.externalPaymentKey = externalPaymentKey
+    }
+
     fun success(externalPaymentKey: String, method: PaymentMethod, approveCode: String) {
         this.state = PaymentState.SUCCESS
         this.externalPaymentKey = externalPaymentKey

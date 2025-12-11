@@ -2,7 +2,6 @@ package io.dodn.commerce.core.domain
 
 import io.dodn.commerce.core.enums.EntityStatus
 import io.dodn.commerce.core.enums.OrderState
-import io.dodn.commerce.core.enums.PaymentMethod
 import io.dodn.commerce.core.enums.PaymentState
 import io.dodn.commerce.core.enums.PointType
 import io.dodn.commerce.core.enums.TransactionType
@@ -51,40 +50,55 @@ class PaymentService(
         return paymentRepository.save(payment).id
     }
 
+    // NOTE: 검증 및 진행 중 처리 (READY -> IN_PROGRESS)
     @Transactional
-    fun success(orderKey: String, externalPaymentKey: String, amount: BigDecimal): Long {
-        val order = orderRepository.findByOrderKeyAndStateAndStatus(orderKey, OrderState.CREATED, EntityStatus.ACTIVE) ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
+    fun preparePayment(orderKey: String, externalPaymentKey: String, amount: BigDecimal): PaymentCommand {
+        val order = orderRepository.findByOrderKeyAndStateAndStatus(orderKey, OrderState.CREATED, EntityStatus.ACTIVE)
+            ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
 
-        val payment = paymentRepository.findByOrderId(order.id) ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
+        val payment = paymentRepository.findByOrderId(order.id)
+            ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
+
         if (payment.userId != order.userId) throw CoreException(ErrorType.NOT_FOUND_DATA)
         if (payment.state != PaymentState.READY) throw CoreException(ErrorType.PAYMENT_INVALID_STATE)
-        if (payment.paidAmount != amount) throw CoreException(ErrorType.PAYMENT_AMOUNT_MISMATCH)
+        if (payment.paidAmount.compareTo(amount) != 0) throw CoreException(ErrorType.PAYMENT_AMOUNT_MISMATCH)
 
-        // (중요) 여기까지는 고객한테 아직 돈이 안나간 상태임.
-        // PG 사 호출 전에 미리 유효성 검사를 해야 한다.
+        payment.inProgress(externalPaymentKey)
 
-        /** (핵심)
-         * NOTE: PG 승인 API 호출 => 성공 시 다음 로직으로 진행 | 실패 시 예외 발생
-         * - 아래는 API 호출 이후의 성공/실패 이후의 로직임. (실제로는 외부 PG사에 API 요청이 이뤄저야한다.)
-         * - API 요청에 대해서 PG사로부터 응답값을 받게 된다.
-         *  - 응답값 기준으로 외부 결제키, 승인번호 등이 있다.
-         */
+        return PaymentCommand(
+            externalPaymentKey = externalPaymentKey,
+            orderId = order.id,
+            amount = payment.paidAmount.toLong(),
+        )
+    }
 
+    // NOTE: 결제 완료 처리 (IN_PROGRESS -> SUCCESS)
+    // - 만약 여기서 장애가 발생하면? PG사는 결제 완료되었으나, DB는 'IN_PROGRESS' 상태로 남아 데이터 불일치가 발생한다.
+    // - 이를 해결하기 위해 배치가 주기적으로 'IN_PROGRESS' 상태이면서 오래된 건들을 조회하여 수행한다.
+    @Transactional
+    fun completePayment(orderKey: String, paymentResult: PaymentResult): Long {
+        val order = orderRepository.findByOrderKeyAndStateAndStatus(orderKey, OrderState.CREATED, EntityStatus.ACTIVE)
+            ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
+        val payment = paymentRepository.findByOrderId(order.id)
+            ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
+
+        if (payment.state != PaymentState.IN_PROGRESS) {
+            throw CoreException(ErrorType.PAYMENT_INVALID_STATE)
+        }
+        // 상태 업데이트
         payment.success(
-            externalPaymentKey,
-            // NOTE: PG 승인 API 호출의 응답 값 중 `결제 수단` 넣기
-            PaymentMethod.CARD,
-            "PG 승인 API 호출의 응답 값 중 `승인번호` 넣기",
+            paymentResult.externalPaymentKey,
+            paymentResult.method,
+            paymentResult.approveNo,
         )
         order.paid()
 
+        // 쿠폰 및 포인트 처리
         if (payment.hasAppliedCoupon()) {
             ownedCouponRepository.findByIdOrNull(payment.ownedCouponId)?.use()
         }
-
         pointHandler.deduct(User(payment.userId), PointType.PAYMENT, payment.id, payment.usedPoint)
         pointHandler.earn(User(payment.userId), PointType.PAYMENT, payment.id, PointAmount.PAYMENT)
-
 
         /**
          * Note:
@@ -98,15 +112,21 @@ class PaymentService(
                 userId = order.userId,
                 orderId = order.id,
                 paymentId = payment.id,
-                externalPaymentKey = externalPaymentKey,
+                externalPaymentKey = paymentResult.externalPaymentKey,
                 amount = payment.paidAmount,
-                message = "결제 성공",
+                message = paymentResult.message,
                 occurredAt = payment.paidAt!!,
             ),
         )
         return payment.id
     }
 
+    /**
+     * 결제 실패 처리
+     * - Payment 상태는 Fail로 변경 (재시도 가능성 열어둠)
+     * - 실패 이력만 History에 기록
+     */
+    @Transactional
     fun fail(orderKey: String, code: String, message: String) {
         val order = orderRepository.findByOrderKeyAndStateAndStatus(orderKey, OrderState.CREATED, EntityStatus.ACTIVE) ?: throw CoreException(ErrorType.NOT_FOUND_DATA)
         val payment = paymentRepository.findByOrderId(order.id) ?: throw CoreException(ErrorType.NOT_FOUND_DATA)

@@ -3,7 +3,6 @@ package io.dodn.commerce.core.domain
 import io.dodn.commerce.storage.db.core.ProductSectionRepository
 import org.springframework.stereotype.Service
 
-
 @Service
 class ProductSectionService(
     private val productSectionRepository: ProductSectionRepository,
