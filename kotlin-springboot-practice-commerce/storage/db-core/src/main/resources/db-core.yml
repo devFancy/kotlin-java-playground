@@ -16,6 +16,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+    defer-datasource-initialization: true # Hibernate가 스키마(테이블) 생성을 마칠 때까지 data.sql 실행을 미루도록 설정
     properties:
       hibernate:
         format_sql: true
