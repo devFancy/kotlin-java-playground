@@ -13,10 +13,10 @@ class RestClientConfig {
     fun restClient(): RestClient {
         val requestFactory = JdkClientHttpRequestFactory(
             HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(3)) // Connection Timeout
+                .connectTimeout(Duration.ofSeconds(3))
                 .build(),
         )
-        requestFactory.setReadTimeout(Duration.ofSeconds(30)) // Read Timeout
+        requestFactory.setReadTimeout(Duration.ofSeconds(3))
 
         return RestClient.builder()
             .requestFactory(requestFactory)

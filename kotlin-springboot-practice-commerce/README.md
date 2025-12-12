@@ -34,7 +34,7 @@ Build, Execution, Deployment > Build Tools > Gradle > Run tests using > IntelliJ
 Beeceptor Console > Mocking Rules 메뉴에서 아래 규칙을 등록해야 합니다.
 
 - Base URL: `https://commerce.free.beeceptor.com` (본인의 Beeceptor 도메인으로 변경 필요)
-- Target URL Path: `/api/v1/payment`
+- Target URL Path: `/api/v1/payments`
 - Method: `POST`
 
 #### Case 1: 결제 승인 성공 (Success)
