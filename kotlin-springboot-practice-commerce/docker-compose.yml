@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+
+  prometheus:
+    image: prom/prometheus:v2.51.2
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./support/monitoring/infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    environment:
+      - TZ=Asia/Seoul
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./support/monitoring/infra/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./support/monitoring/infra/grafana/datasources:/etc/grafana/provisioning/datasources
+    environment:
+      - TZ=Asia/Seoul

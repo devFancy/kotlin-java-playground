@@ -10,6 +10,7 @@ import jakarta.persistence.Table
 import java.math.BigDecimal
 import java.time.LocalDateTime
 
+// 외부에 따라 달라지는 데이터들을 담는 테이블
 @Entity
 @Table(
     name = "payment",
@@ -17,7 +18,6 @@ import java.time.LocalDateTime
         Index(name = "udx_order_id", columnList = "orderId", unique = true),
     ],
 )
-// 외부에 따라 달라지는 데이터들을 담는 테이블
 class PaymentEntity(
     val userId: Long,
     val orderId: Long,
