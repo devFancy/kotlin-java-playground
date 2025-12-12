@@ -14,4 +14,5 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
+    implementation("io.github.resilience4j:resilience4j-micrometer")
 }
