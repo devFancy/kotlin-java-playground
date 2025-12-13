@@ -7,11 +7,9 @@ import io.dodn.commerce.core.support.error.CoreException
 import io.dodn.commerce.core.support.error.ErrorType
 import io.github.resilience4j.circuitbreaker.CircuitBreaker
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry
-import io.micrometer.core.instrument.MeterRegistry
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Import
 import org.springframework.test.web.client.MockRestServiceServer
 import org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo
@@ -33,15 +31,14 @@ class BeeceptorPaymentClientTest(
         )
 
         val circuitBreaker = circuitBreakerRegistry.circuitBreaker("beeceptor-payment")
-
         assertThat(circuitBreaker.state).isEqualTo(CircuitBreaker.State.CLOSED)
 
-        for (i in 1..20) {
+        for (i in 1..10) {
             mockServer.expect(requestTo("https://commerce.free.beeceptor.com/api/v1/payments"))
                 .andRespond(withServerError())
         }
 
-        // when (최소 호출 수 10회, 실패율 50%)
+        // when
         for (i in 1..10) {
             try {
                 beeceptorPaymentClient.requestPayment(command)

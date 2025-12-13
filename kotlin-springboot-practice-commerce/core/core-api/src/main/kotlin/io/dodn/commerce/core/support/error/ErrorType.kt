@@ -17,7 +17,7 @@ enum class ErrorType(val status: HttpStatus, val code: ErrorCode, val message: S
     PAYMENT_INVALID_AMOUNT(HttpStatus.BAD_REQUEST, ErrorCode.E2002, "결제 금액이 0보다 작을 수 없습니다.", LogLevel.INFO),
     PAYMENT_EXTERNAL_API_FAIL(HttpStatus.BAD_GATEWAY, ErrorCode.E2003, "결제 승인 과정에서 일시적인 오류가 발생했습니다. 잠시 후 다시 시도해주세요.", LogLevel.ERROR),
     PAYMENT_EXTERNAL_API_BODY_EMPTY(HttpStatus.BAD_GATEWAY, ErrorCode.E2004, "결제 응답을 처리하는 중 오류가 발생했습니다.", LogLevel.ERROR),
-    PAYMENT_EXTERNAL_API_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, ErrorCode.E2005, "현재 결제 요청량이 많아 처리가 지연되고 있습니다. 잠시 후 다시 시도해주세요.", LogLevel.ERROR),
+    PAYMENT_EXTERNAL_API_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, ErrorCode.E2005, "외부 시스템 처리 작업이 실패했습니다. 잠시 후 다시 시도해주세요.", LogLevel.ERROR),
     PAYMENT_REJECTED(HttpStatus.BAD_REQUEST, ErrorCode.E2006, "결제 승인이 거절되었습니다. 결제 정보 및 잔액을 확인해주세요.", LogLevel.WARN),
 
     // 상품
