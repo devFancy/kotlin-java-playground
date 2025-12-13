@@ -11,15 +11,11 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import org.springframework.context.annotation.Import
-import org.springframework.test.web.client.MockRestServiceServer
-import org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo
-import org.springframework.test.web.client.response.MockRestResponseCreators.withServerError
 
 @Import(TestRestClientConfig::class)
 class BeeceptorPaymentClientTest(
     private val beeceptorPaymentClient: BeeceptorPaymentClient,
     private val circuitBreakerRegistry: CircuitBreakerRegistry,
-    private var mockServer: MockRestServiceServer,
 ) : ContextTest() {
     @Test
     fun `외부 API가 반복적으로 실패하면 서킷 브레이커가 OPEN 되고 Fallback 예외가 발생한다`() {
@@ -32,11 +28,6 @@ class BeeceptorPaymentClientTest(
 
         val circuitBreaker = circuitBreakerRegistry.circuitBreaker("beeceptor-payment")
         assertThat(circuitBreaker.state).isEqualTo(CircuitBreaker.State.CLOSED)
-
-        for (i in 1..10) {
-            mockServer.expect(requestTo("https://commerce.free.beeceptor.com/api/v1/payments"))
-                .andRespond(withServerError())
-        }
 
         // when
         for (i in 1..10) {
